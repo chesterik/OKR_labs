@@ -1,0 +1,153 @@
+:root {
+   --bg-color: #f7f7f7;
+   --accent: #023020;
+   --yellow: #817b0b;
+   --text-dark: #1a1a1a;
+}
+
+body {
+   background-color: var(--bg-color);
+   font-family: 'Segoe UI', Roboto, sans-serif;
+   margin: 0;
+   padding-top: 100px;
+}
+
+.main-nav a {
+   text-decoration: none;
+   color: var(--text-dark);
+   font-weight: 600;
+   font-size: 15px;
+   padding: 10px 15px;
+   border-radius: 25px;
+   transition: 0.3s;
+}
+
+.main-nav a:hover {
+   background-color: var(--accent);
+   color: white;
+}
+
+.header-gallery>h1 {
+   font-family: 'Georgia', serif;
+   font-size: 4rem;
+   color: var(--accent);
+   text-align: center;
+   margin-left: 0;
+   margin-bottom: 30px;
+   padding: 0 20px;
+}
+
+.pin-content b+p {
+   margin-top: 5px;
+   color: var(--yellow);
+   font-style: italic;
+}
+
+.pin-item~.pin-item {
+   opacity: 0.6;
+}
+
+header {
+   position: fixed;
+   top: 0;
+   width: 100%;
+   height: 75px;
+   background: white;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 0 25px;
+   box-sizing: border-box;
+   z-index: 1000;
+   box-shadow: 0 1px 12px rgba(0, 0, 0, 0.1);
+}
+
+.logo-section {
+   display: flex;
+   align-items: center;
+   gap: 15px;
+}
+
+.logo-icon {
+   background: var(--accent);
+   color: white;
+   width: 35px;
+   height: 35px;
+   border-radius: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-weight: bold;
+   text-decoration: none;
+}
+
+.container {
+   column-count: 4;
+   column-gap: 20px;
+   width: 90%;
+   max-width: 1400px;
+   margin: 0 auto;
+}
+
+.pin-item {
+   display: inline-block;
+   width: 100%;
+   background: white;
+   border-radius: 16px;
+   margin-bottom: 20px;
+   overflow: hidden;
+   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+   transition: 0.3s;
+}
+
+.pin-item:hover {
+   transform: scale(1.02);
+}
+
+.pin-item img {
+   width: 100%;
+   display: block;
+}
+
+.pin-content {
+   padding: 15px;
+}
+
+.avatar {
+   width: 35px;
+   height: 35px;
+   background: var(--yellow);
+   border-radius: 50%;
+   color: white;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 14px;
+}
+
+.profile-link {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   text-decoration: none;
+   color: var(--text-dark);
+}
+
+footer {
+   text-align: center;
+   padding: 40px;
+   color: #888;
+   margin-top: 40px;
+}
+
+@media (max-width: 1000px) {
+   .container {
+      column-count: 3;
+   }
+}
+
+@media (max-width: 700px) {
+   .container {
+      column-count: 2;
+   }
+}
