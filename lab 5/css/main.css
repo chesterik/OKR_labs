@@ -47,6 +47,10 @@ body {
 }
 
 
+.float-box p::after {
+   content: "! ";
+}
+
 .pin-content b+p {
    margin-top: 5px;
    color: var(--yellow);
