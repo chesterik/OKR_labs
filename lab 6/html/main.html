@@ -5,10 +5,10 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="description" content="Noble Art — Галерея сучасного мистецтва">
-   <meta name="author" content="Arseny">
+   <meta name="author" content="Arseny Dmitriiev ">
    <title>Noble Art</title>
    <link rel="stylesheet" href="../css/main.css">
-   <script src="../scripts/index.js" defer></script>
+   <script src="../scripts/main.js" defer></script>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
       </div>
       <nav class="main-nav">
          <a href="schedule.html">Графік роботи</a>
-         <a href="location.html">Розташування</a>
+         <a style="cursor: pointer;" id="location">Розташування</a>
       </nav>
       <div class="user-controls">
          <a href="#" class="profile-link">
@@ -31,7 +31,15 @@
    </header>
 
    <div class="sub-nav">
+
+      <button id="dialog-btn" class="sub-nav-btn">Запустити Діалог</button>
+
+      <!-- <button id="dom-test-btn" class="sub-nav-btn">Тест DOM-вузлів</button> -->
+
       <button onclick="searchPainting()">Яку картину ви хочете побачити?</button>
+
+      <!-- <button id="remove-btn" class="sub-nav-btn" style="text-align: right; background-color: #933;">Видалити
+         зайве</button> -->
    </div>
 
    <div class="header-gallery">
