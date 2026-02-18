@@ -6,25 +6,22 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="description" content="Noble Art — Галерея сучасного мистецтва">
    <meta name="author" content="Arseny">
-
    <title>Noble Art | Вибрані твори</title>
-   <link rel="stylesheet" href="/lab 5/css/main.css">
-   <script src="/lab 6/scripts/index.js" defer></script>
+   <link rel="stylesheet" href="../css/main.css">
+   <script src="../scripts/index.js" defer></script>
 </head>
 
 <body>
 
    <header>
       <div class="logo-section">
-         <a href="/lab 5/html/home.html" class="logo-icon">N</a>
+         <a href="home.html" class="logo-icon">N</a>
          <font face="Georgia" size="4"><b>Noble Art</b></font>
       </div>
-
       <nav class="main-nav">
-         <a href="/lab 5/html/schedule.html">Графік роботи</a>
-         <a href="/lab 5/html/location.html">Розташування</a>
+         <a href="schedule.html">Графік роботи</a>
+         <a href="location.html">Розташування</a>
       </nav>
-
       <div class="user-controls">
          <a href="#" class="profile-link">
             <span>Мій профіль</span>
@@ -32,6 +29,10 @@
          </a>
       </div>
    </header>
+
+   <div class="sub-nav">
+      <button onclick="searchPainting()">Яку картину ви хочете побачити?</button>
+   </div>
 
    <div class="header-gallery">
       <h1 id="main-title">Curated Artworks</h1>
@@ -41,30 +42,104 @@
       <div class="float-box">
          <p>INFO</p>
       </div>
-
       <p id="description-text">
-         <font size="3">
-            <b>Погляд крізь епохи:</b> Ласкаво просимо до нашої зали...
-         </font>
+         <font size="3"><b>Погляд крізь епохи:</b> Ласкаво просимо до нашої зали...</font>
       </p>
    </div>
 
-   <div class="container">
+   <div class="container" id="gallery-container">
       <div class="pin-item">
-         <a href="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5" target="_blank">
-            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=500" alt="Золотий Ренесанс">
-         </a>
-         <div class="pin-content">
-            <b>Золотий Ренесанс</b>
-            <p>
-               <font size="2">Епоха класики, олія</font>
-            </p>
+         <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5"
+            onclick="openPainting(this.src, 'Золотий Ренесанс')">
+         <div class="pin-content"><b>Золотий Ренесанс</b></div>
+      </div>
+
+      <div class="pin-item">
+         <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=500"
+            onclick="openPainting(this.src, 'Нічна тиша')">
+         <div class="pin-content"><b>Нічна тиша</b>
+            <p>Абстракція, акрил</p>
+         </div>
+      </div>
+
+      <div class="pin-item">
+         <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=500"
+            onclick="openPainting(this.src, 'Подих знань')">
+         <div class="pin-content"><b>Подих знань</b>
+            <p>Сюрреалізм</p>
+         </div>
+      </div>
+
+      <div class="pin-item">
+         <img src="https://images.unsplash.com/photo-1501472312651-726afe119ff1?w=500"
+            onclick="openPainting(this.src, 'Космічний пил')">
+         <div class="pin-content"><b>Космічний пил</b>
+            <p>Digital Art</p>
+         </div>
+      </div>
+
+      <div class="pin-item">
+         <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=500"
+            onclick="openPainting(this.src, 'Смарагдовий сон')">
+         <div class="pin-content"><b>Смарагдовий сон</b>
+            <p>Сучасний етюд</p>
+         </div>
+      </div>
+
+      <div class="pin-item">
+         <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=500"
+            onclick="openPainting(this.src, 'Геометрія душі')">
+         <div class="pin-content"><b>Геометрія душі</b>
+            <p>Кубізм</p>
+         </div>
+      </div>
+
+      <div class="pin-item">
+         <img src="https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?w=500"
+            onclick="openPainting(this.src, 'Міський ритм')">
+         <div class="pin-content"><b>Міський ритм</b>
+            <p>Урбаністика</p>
+         </div>
+      </div>
+
+      <div class="pin-item">
+         <img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=500"
+            onclick="openPainting(this.src, 'Золота осінь')">
+         <div class="pin-content"><b>Золота осінь</b>
+            <p>Пейзаж</p>
+         </div>
+      </div>
+
+      <div class="pin-item">
+         <img src="https://images.unsplash.com/photo-1554188248-986adbb73be4?w=500"
+            onclick="openPainting(this.src, 'Блакитна лагуна')">
+         <div class="pin-content"><b>Блакитна лагуна</b>
+            <p>Марина</p>
+         </div>
+      </div>
+   </div>
+   </div>
+   </div>
+
+   <div class="chat-section">
+      <h2>Діалог з користувачем</h2>
+      <div class="chat-wrapper">
+         <div class="input-panel">
+            <h3>Користувач 1</h3>
+            <textarea id="msg1" placeholder="Привіт..."></textarea>
+            <button onclick="sendMessage(1)">Надіслати</button>
+         </div>
+         <div class="messages" id="chat"></div>
+         <div class="input-panel">
+            <h3>Користувач 2</h3>
+            <textarea id="msg2" placeholder="Привіт..."></textarea>
+            <button onclick="sendMessage(2)">Надіслати</button>
          </div>
       </div>
    </div>
 
    <footer>
-      &copy; 2026 Noble Art Project — Світ, де мистецтво стає реальністю.
+      <p>&copy; 2026 Noble Art Project <button id="author-btn" class="js-btn-footer">Про автора</button> </p>
    </footer>
 </body>
 
