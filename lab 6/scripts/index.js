@@ -92,21 +92,27 @@ function searchPainting() {
    }
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
-   // Порівняння рядків (закоментовано)
+   const titles = document.querySelectorAll('.pin-content b');
 
-   function compare(a, b) {
-      a.length > b.length ? alert(a) : alert(b);
+   if (titles.length >= 2) {
+      const a = titles[0].innerText;
+      const b = titles[1].innerText;
+
+      let result;
+      if (a.length > b.length) {
+         result = a;
+      } else {
+         result = b;
+      }
+
+      console.log("Порівняння:", a, "VS", b);
+      console.log("Довша назва:", result);
    }
 
-
-   // Зміна фону на 30 сек (закоментовано)
    document.body.style.background = "lightgray";
    setTimeout(() => document.body.style.background = "", 30000);
 
-
-   // Кнопка автора
    document.getElementById('author-btn').onclick = () => showDeveloperInfo("Arseny", "YourName");
 
 });
