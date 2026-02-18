@@ -1,5 +1,4 @@
 function openPainting(imgSrc, title) {
-   // Тільки назва картини, ніякої зайвої інструкції
    alert("Картина: " + title);
 
    document.open();
@@ -49,13 +48,12 @@ function openPainting(imgSrc, title) {
     `);
    document.close();
 }
-// 3. Функція інформації про розробника (Owner за замовчуванням)
+
 function showDeveloperInfo(surname, name, position = "Owner") {
    const metaAuthor = document.querySelector('meta[name="author"]').content;
    alert(`Автор: ${name} ${surname}\nПосада: ${position}\nMeta-Author: ${metaAuthor}`);
 }
 
-// 4. Діалог (Чат)
 function sendMessage(user) {
    const ta = document.getElementById(user === 1 ? 'msg1' : 'msg2');
    const text = ta.value.trim();
@@ -75,7 +73,6 @@ function searchPainting() {
    const query = prompt("Введіть назву картини, яку шукаєте:");
 
    if (query) {
-      // Логіка пошуку: шукаємо картку з такою назвою
       const cards = document.querySelectorAll('.pin-item');
       let found = false;
 
@@ -83,7 +80,7 @@ function searchPainting() {
          const title = card.querySelector('b').innerText.toLowerCase();
          if (title.includes(query.toLowerCase())) {
             card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            card.style.outline = "5px solid yellow"; // Підсвічуємо знахідку
+            card.style.outline = "5px solid yellow";
             setTimeout(() => card.style.outline = "none", 3000);
             found = true;
          }
@@ -95,24 +92,21 @@ function searchPainting() {
    }
 }
 
-// 5. Робота з DOM при завантаженні
+
 document.addEventListener('DOMContentLoaded', () => {
    // Порівняння рядків (закоментовано)
-   /*
+
    function compare(a, b) {
-       a.length > b.length ? alert(a) : alert(b);
+      a.length > b.length ? alert(a) : alert(b);
    }
-   */
+
 
    // Зміна фону на 30 сек (закоментовано)
-   /*
    document.body.style.background = "lightgray";
    setTimeout(() => document.body.style.background = "", 30000);
-   */
+
 
    // Кнопка автора
    document.getElementById('author-btn').onclick = () => showDeveloperInfo("Arseny", "YourName");
 
-   // Приклад location (закоментовано, щоб не редиректило відразу)
-   // location.href = "https://google.com";
 });

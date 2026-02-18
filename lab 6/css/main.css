@@ -92,7 +92,7 @@ body {
 }
 
 .pin-content b+p {
-   margin-top: 5px;
+   margin-top: 10px 0;
    color: var(--yellow);
    font-style: italic;
 }
@@ -142,13 +142,15 @@ header {
 .pin-item {
    display: inline-block;
    width: 100%;
-   margin-bottom: 25px;
+   margin-bottom: 20px;
    background: white;
    border-radius: 16px;
    overflow: hidden;
    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
    transition: 0.3s;
    break-inside: avoid;
+   display: flex;
+   flex-direction: column;
 }
 
 .container>.pin-item:first-child {
@@ -161,6 +163,21 @@ header {
    display: block;
 }
 
+.pin-content {
+   padding: 15px;
+   min-height: fit-content;
+   background: white;
+}
+
+.pin-content b+p {
+   display: block;
+   font-size: 16px;
+   margin-bottom: 5px;
+   color: #333;
+   line-height: 1.2;
+}
+
+
 .profile-link {
    display: flex;
    align-items: center;
@@ -168,6 +185,11 @@ header {
    text-decoration: none;
    color: var(--text-dark);
 }
+
+.container>.pin-item:first-child {
+   border: 3px solid var(--accent) !important;
+}
+
 
 a:link {
    color: var(--accent);
