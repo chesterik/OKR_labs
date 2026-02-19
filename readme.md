@@ -7,5 +7,5 @@
 4. OKR_lab_4
 5. OKR_lab_5
 6. OKR_lab_6
-7. OKR_lab_7
-8. OKR_lab_8
+<!-- 7. OKR_lab_7
+8. OKR_lab_8 -->

@@ -1,2 +1,2 @@
-# OKR_lab_2
+# OKR_lab_6
 
