@@ -1,28 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-   const titles = document.querySelectorAll('.pin-content b');
-
-   if (titles.length >= 2) {
-      const a = titles[0].innerText;
-      const b = titles[1].innerText;
-
-      let result;
-      if (a.length > b.length) {
-         result = a;
-      } else {
-         result = b;
-      }
-
-      console.log("Порівняння:", a, "VS", b);
-      console.log("Довша назва:", result);
-   }
-
-   document.body.style.background = "lightgray";
-   setTimeout(() => document.body.style.background = "", 30000);
-
-   document.getElementById('author-btn').onclick = () => showDeveloperInfo("Arseny", "YourName");
-
-});
-
 document.querySelector("#location").onclick = () => {
    window.location.href = '../html/location.html';
 };
@@ -76,6 +51,9 @@ function openPainting(imgSrc, title) {
         </html>
     `);
    document.close();
+
+   console.log(document.documentElement.outerHTML);
+
 }
 
 function showDeveloperInfo(surname, name, position = "Owner") {
@@ -121,43 +99,64 @@ function searchPainting() {
    }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-   // ... твій існуючий код ...
-
-   // Прив'язка нових кнопок
-   document.getElementById('dialog-btn').onclick = userDialog;
-   document.getElementById('dom-test-btn').onclick = testDOMNodes;
-   document.getElementById('remove-btn').onclick = () => {
-      // Вимога ТЗ: node.remove()
-      const lastMsg = document.querySelector('.msg:last-child');
-      if (lastMsg) {
-         lastMsg.remove();
-         console.log("Останнє повідомлення видалено");
-      } else {
-         alert("Нічого видаляти!");
-      }
-   };
-});
-
-// --- НОВІ ФУНКЦІЇ ЗА ТЗ ---
-
-// 1. Функція «Діалог з користувачем» (confirm + prompt + цикл + змінні)
 function userDialog() {
-   const isReady = confirm("Бажаєте дізнатися кількість картин у галереї?"); // confirm за ТЗ
 
-   if (isReady) {
-      const count = prompt("Скільки картин ви хочете проаналізувати?", "3"); // prompt за ТЗ
-      const titles = document.querySelectorAll('.pin-content b');
+   const isReady = confirm("Бажаєте дізнатися кількість картин у галереї?");
 
-      let result = "Ось назви перших " + count + " картин:\n";
-
-      // ЦИКЛ (вимога ТЗ)
-      for (let i = 0; i < Math.min(count, titles.length); i++) {
-         result += (i + 1) + ". " + titles[i].textContent + "\n"; // textContent за ТЗ
-      }
-      alert(result);
+   if (!isReady) {
+      alert("Діалог скасовано.");
+      return;
    }
+
+   const titles = document.querySelectorAll('.pin-content b');
+
+   if (titles.length === 0) {
+      alert("У галереї наразі немає картин.");
+      return;
+   }
+
+   let count = prompt(
+      `Скільки картин ви хочете проаналізувати? (1 - ${titles.length})`,
+      "3"
+   );
+
+   if (count === null) {
+      alert("Введення скасовано.");
+      return;
+   }
+
+   count = Number(count);
+
+   if (isNaN(count)) {
+      alert("Будь ласка, введіть числове значення.");
+      return;
+   }
+
+   if (!Number.isInteger(count)) {
+      alert("Потрібно ввести ціле число.");
+      return;
+   }
+
+   if (count <= 0) {
+      alert("Кількість має бути більшою за 0.");
+      return;
+   }
+
+   if (count > titles.length) {
+      alert(`У галереї лише ${titles.length} картин.`);
+      return;
+   }
+
+   let result = `Ось назви перших ${count} картин:\n\n`;
+
+   for (let i = 0; i < count; i++) {
+      result += `${i + 1}. ${titles[i].textContent}\n`;
+   }
+
+   alert(result);
 }
+
+
 
 
 

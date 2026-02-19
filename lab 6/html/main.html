@@ -8,6 +8,26 @@
    <meta name="author" content="Arseny Dmitriiev ">
    <title>Noble Art</title>
    <link rel="stylesheet" href="../css/main.css">
+   <script>
+      document.addEventListener('DOMContentLoaded', () => {
+         const titles = document.querySelectorAll('.pin-content b');
+
+         if (titles.length >= 2) {
+            const a = titles[0].innerText;
+            const b = titles[1].innerText;
+
+            const result = (a.length > b.length) ? a : b;
+            console.log(result)
+            // alert("Довша назва: " + result);
+         }
+
+         document.body.style.background = "lightgray";
+         setTimeout(() => document.body.style.background = "", 30000);
+
+         document.getElementById('author-btn').onclick = () => showDeveloperInfo("Dmitriiev", "Arseny");
+
+      });
+   </script>
    <script src="../scripts/main.js" defer></script>
 </head>
 
@@ -18,29 +38,24 @@
          <a href="home.html" class="logo-icon">N</a>
          <font face="Georgia" size="4"><b>Noble Art</b></font>
       </div>
-      <nav class="main-nav">
-         <a href="schedule.html">Графік роботи</a>
-         <a style="cursor: pointer;" id="location">Розташування</a>
-      </nav>
+      <div class="center-block">
+         <nav class="main-nav">
+            <a href="schedule.html">Графік роботи</a>
+            <a style="cursor: pointer;" id="location">Розташування</a>
+         </nav>
+         <div>
+            <button onclick="searchPainting()" class="sub-nav-btn">Запустити Діалог</button>
+            <button onclick="searchPainting()">Яку картину ви хочете побачити?</button>
+         </div>
+      </div>
       <div class="user-controls">
-         <a href="#" class="profile-link">
+         <a href="#" style="border-radius: 500px; padding: 4px;" class="profile-link">
             <span>Мій профіль</span>
             <div class="avatar">JD</div>
          </a>
       </div>
+
    </header>
-
-   <div class="sub-nav">
-
-      <button id="dialog-btn" class="sub-nav-btn">Запустити Діалог</button>
-
-      <!-- <button id="dom-test-btn" class="sub-nav-btn">Тест DOM-вузлів</button> -->
-
-      <button onclick="searchPainting()">Яку картину ви хочете побачити?</button>
-
-      <!-- <button id="remove-btn" class="sub-nav-btn" style="text-align: right; background-color: #933;">Видалити
-         зайве</button> -->
-   </div>
 
    <div class="header-gallery">
       <h1 id="main-title">Curated Artworks</h1>

@@ -9,28 +9,65 @@
 
    <title>Noble Art</title>
    <link rel="stylesheet" href="/lab 6/css/schedule.css">
+
+   <script>
+      document.addEventListener("DOMContentLoaded", () => {
+         const card = document.querySelector(".content-card");
+         if (card) {
+            const note = document.createElement("div");
+            const txt = document.createTextNode("Додано через createTextNode()");
+            note.append(txt);
+            card.prepend(note);
+
+            const badge = document.createElement("span");
+            badge.textContent = "NEW";
+            note.after(badge);
+
+            const repl = document.createElement("div");
+            repl.textContent = "Замінено через replaceWith()";
+            badge.replaceWith(repl);
+
+            setTimeout(() => {
+               note.remove();
+            }, 3000);
+
+            setTimeout(() => {
+               repl.remove();
+            }, 4000);
+         }
+
+         const footer = document.querySelector("footer");
+         const t = document.createTextNode(" | JS enabled");
+         footer.append(t);
+         alert(t.data);
+      });
+   </script>
+
+
+
+   </script>
 </head>
 
-<header>
-   <div class="logo-section">
-      <a href="/lab 6/html/home.html" class="logo-icon">N</a>
-      <font face="Georgia" size="4"><b>Noble Art</b></font>
-   </div>
-
-   <nav class="main-nav">
-      <a href="/lab 6/html/main.html">Головна</a>
-      <a href="/lab 6/html/location.html">Розташування</a>
-   </nav>
-
-   <div class="user-controls">
-      <a href="#" class="profile-link">
-         <span>Мій профіль</span>
-         <div class="avatar">JD</div>
-      </a>
-   </div>
-</header>
-
 <body>
+
+   <header>
+      <div class="logo-section">
+         <a href="/lab 6/html/home.html" class="logo-icon">N</a>
+         <font face="Georgia" size="4"><b>Noble Art</b></font>
+      </div>
+
+      <nav class="main-nav">
+         <a href="/lab 6/html/main.html">Головна</a>
+         <a href="/lab 6/html/location.html">Розташування</a>
+      </nav>
+
+      <div class="user-controls">
+         <a href="#" class="profile-link">
+            <span>Мій профіль</span>
+            <div class="avatar">JD</div>
+         </a>
+      </div>
+   </header>
 
    <div class="content-card">
       <h1>Графік роботи та відвідування</h1>
