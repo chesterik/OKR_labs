@@ -23,6 +23,12 @@ body {
    transition: 0.3s;
 }
 
+
+.main-nav {
+   display: flex;
+   gap: 25px;
+}
+
 .main-nav a:hover {
    background-color: var(--accent);
    color: white;
@@ -37,6 +43,20 @@ body {
    margin-bottom: 30px;
    padding: 0 20px;
 }
+
+.user-controls span {
+   text-decoration: none;
+   font-weight: 600;
+   font-size: 15px;
+   padding: 10px 15px;
+   transition: 0.3s;
+}
+
+.user-controls a:hover {
+   border-radius: 500px;
+   color: white;
+}
+
 
 .header-gallery h1::before {
    content: "( ";
@@ -201,12 +221,54 @@ a:active {
    border-radius: 12px;
 }
 
+.new-text p {
+   color: black !important;
+}
 
-footer {
+h1 {
+   font-family: 'Georgia', serif;
+   font-size: 3rem;
+   color: #1a1a1a;
    text-align: center;
-   padding: 40px;
-   color: #888;
-   margin-top: 40px;
+   line-height: 1.2;
+   margin-bottom: 20px;
+}
+
+ul,
+ol {
+   background: #ffffff;
+   padding: 20px 40px;
+   margin: 15px 0;
+   border: 1px solid #ddd;
+   border-radius: 8px;
+}
+
+dl {
+   background: #333;
+   padding: 15px;
+   border-left: 5px solid var(--yellow);
+   color: white;
+}
+
+dt {
+   font-weight: bold;
+   color: var(--yellow);
+   margin-top: 10px;
+}
+
+dd {
+   margin-left: 20px;
+   font-style: italic;
+}
+
+a {
+   text-decoration: none;
+   transition: 0.3s;
+}
+
+ul li font,
+ol li font {
+   color: #111 !important;
 }
 
 @media (max-width: 1000px) {
@@ -219,4 +281,11 @@ footer {
    .container {
       column-count: 2;
    }
+}
+
+footer {
+   text-align: center;
+   padding: 40px;
+   color: #888;
+   margin-top: 40px;
 }

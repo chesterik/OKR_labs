@@ -1,3 +1,7 @@
+:root {
+   --accent: #023020;
+}
+
 /** header  */
 
 header {
@@ -23,7 +27,7 @@ header {
 }
 
 .logo-icon {
-   background: #e60023;
+   background: var(--accent);
    color: white;
    width: 35px;
    height: 35px;
@@ -35,12 +39,12 @@ header {
    text-decoration: none;
 }
 
-nav.main-nav {
+.main-nav {
    display: flex;
    gap: 25px;
 }
 
-nav.main-nav a {
+.main-nav a {
    text-decoration: none;
    color: #111;
    font-weight: 600;
@@ -50,14 +54,30 @@ nav.main-nav a {
    transition: 0.3s;
 }
 
-nav.main-nav a:hover {
-   background-color: #efefef;
+.main-nav a:hover {
+   background-color: var(--accent);
+   color: white;
 }
 
 .user-controls {
    display: flex;
    align-items: center;
    gap: 20px;
+}
+
+.user-controls span {
+   text-decoration: none;
+   font-weight: 600;
+   font-size: 15px;
+   padding: 10px 15px;
+   transition: 0.3s;
+   transition: 0.3s;
+}
+
+.user-controls a:hover {
+   background-color: var(--accent);
+   border-radius: 500px;
+   color: white;
 }
 
 .profile-link {
@@ -92,18 +112,6 @@ body {
    flex-direction: column;
    align-items: center;
 
-}
-
-.back-btn {
-   position: absolute;
-   left: 30px;
-   top: 25px;
-   text-decoration: none;
-   color: #111;
-   font-weight: bold;
-   display: flex;
-   align-items: center;
-   gap: 5px;
 }
 
 .content-card {
