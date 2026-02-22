@@ -1,22 +1,277 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="Noble Art">
-   <meta name="author" content="Arseny">
+   <title>Noble Art | Особистий кабінет</title>
+   <style>
+      /* Базові стилі */
+      body {
+         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+         background-color: #f5f6f8;
+         margin: 0;
+         display: flex;
+         color: #1a1b1e;
+      }
 
-   <title>Noble Art</title>
+      /* Бокова панель */
+      .sidebar {
+         width: 260px;
+         background-color: #fff;
+         border-right: 1px solid #eaedf1;
+         padding: 30px 20px;
+         height: 100vh;
+         box-sizing: border-box;
+      }
+
+      .logo {
+         font-size: 20px;
+         font-weight: bold;
+         margin-bottom: 40px;
+         letter-spacing: 1px;
+      }
+
+      .user-profile {
+         display: flex;
+         align-items: center;
+         margin-bottom: 30px;
+      }
+
+      .user-profile img {
+         width: 48px;
+         height: 48px;
+         border-radius: 50%;
+         margin-right: 15px;
+      }
+
+      .user-info h3 {
+         margin: 0 0 4px 0;
+         font-size: 15px;
+      }
+
+      .user-info p {
+         margin: 0;
+         font-size: 13px;
+         color: #8c97a1;
+      }
+
+      .nav-menu {
+         list-style: none;
+         padding: 0;
+         margin: 0;
+      }
+
+      .nav-menu a {
+         display: block;
+         padding: 12px 15px;
+         color: #5e6a75;
+         text-decoration: none;
+         border-radius: 8px;
+         margin-bottom: 5px;
+         font-weight: 500;
+      }
+
+      .nav-menu a:hover {
+         background-color: #f5f6f8;
+      }
+
+      .nav-menu a.active {
+         background-color: #e6f0f6;
+         color: #3898ec;
+      }
+
+      .nav-menu a.logout {
+         color: #d9534f;
+         margin-top: 15px;
+      }
+
+      /* Основна частина */
+      .main-content {
+         flex: 1;
+         padding: 40px 50px;
+      }
+
+      h1 {
+         margin-top: 0;
+         margin-bottom: 30px;
+         font-size: 28px;
+      }
+
+      /* Картка та пошук */
+      .card {
+         background-color: #fff;
+         border-radius: 12px;
+         border: 1px solid #eaedf1;
+         overflow: hidden;
+      }
+
+      .search-box {
+         padding: 20px;
+         text-align: right;
+      }
+
+      .search-box input {
+         padding: 10px 15px;
+         border: 1px solid #eaedf1;
+         border-radius: 20px;
+         width: 260px;
+         outline: none;
+         font-family: inherit;
+      }
+
+      .search-box input:focus {
+         border-color: #3898ec;
+      }
+
+      /* Таблиця */
+      table {
+         width: 100%;
+         border-collapse: collapse;
+         text-align: left;
+      }
+
+      th {
+         background-color: #e6f0f6;
+         color: #5e6a75;
+         padding: 15px 20px;
+         font-size: 12px;
+         text-transform: uppercase;
+      }
+
+      td {
+         padding: 20px;
+         border-bottom: 1px solid #eaedf1;
+         color: #5e6a75;
+         font-size: 14px;
+         line-height: 1.5;
+      }
+
+      tr:last-child td {
+         border-bottom: none;
+      }
+
+      tr:hover td {
+         background-color: #fafbfc;
+      }
+
+      /* Елементи картини */
+      .art-item {
+         display: flex;
+         align-items: center;
+      }
+
+      .art-item img {
+         width: 60px;
+         height: 60px;
+         border-radius: 8px;
+         object-fit: cover;
+         margin-right: 15px;
+         border: 1px solid #eaedf1;
+      }
+
+      .art-item span {
+         color: #1a1b1e;
+         font-weight: bold;
+         font-size: 15px;
+      }
+
+      .dots {
+         color: #8c97a1;
+         cursor: pointer;
+         font-weight: bold;
+         font-size: 18px;
+      }
+
+      .dots:hover {
+         color: #1a1b1e;
+      }
+   </style>
 </head>
 
 <body>
-   <div class=" hero">
-      <h1>Noble Art</h1>
-      <a href="main.html" class="get-started">Відкрити галерею</a>
-   </div>
-</body>
 
-</html>
+
+   <aside class="sidebar">
+      <div class="logo">Noble Art</div>
+
+      <div class="user-profile">
+         <div class="user-info">
+            <h3>UserProfile</h3>
+            <p>role</p>
+         </div>
+      </div>
+
+      <ul class="nav-menu">
+         <li><a href="#mycollection" class="active">Моя колекція</a></li>
+         <li><a href="main.html" class="logout">Вийти з акаунта</a></li>
+      </ul>
+   </aside>
+
+   <main class="main-content">
+
+      <h1 id="mycollection">Моя колекція</h1>
+
+      <div class="card">
+
+         <div class="search-box">
+            <input type="text" placeholder="Пошук по збережених...">
+         </div>
+
+         <table>
+            <thead>
+               <tr>
+                  <th style="width: 35%;">Картина</th>
+                  <th style="width: 55%;">Опис</th>
+                  <th style="width: 10%; text-align: center;">Дії</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>
+                     <div class="art-item">
+                        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=150&h=150&fit=crop"
+                           alt="Картина">
+                        <span>Золота Осінь</span>
+                     </div>
+                  </td>
+                  <td>Класичний осінній пейзаж, який передає тепло та спокій природи. Використані яскраві теплі відтінки
+                     жовтого та помаранчевого.</td>
+                  <td style="text-align: center;"><span class="dots" title="Видалити з колекції">•••</span></td>
+               </tr>
+
+               <tr>
+                  <td>
+                     <div class="art-item">
+                        <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=150&h=150&fit=crop"
+                           alt="Картина">
+                        <span>Космічний Пейзаж</span>
+                     </div>
+                  </td>
+                  <td>Абстрактна робота, натхненна безмежністю космосу. Глибокі сині та фіолетові кольори створюють
+                     ефект нескінченності.</td>
+                  <td style="text-align: center;"><span class="dots" title="Видалити з колекції">•••</span></td>
+               </tr>
+
+               <tr>
+                  <td>
+                     <div class="art-item">
+                        <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=150&h=150&fit=crop"
+                           alt="Картина">
+                        <span>Портрет невідомої</span>
+                     </div>
+                  </td>
+                  <td>Загадковий портрет дівчини. Робота виконана у стриманій палітрі, акцент зроблено на виразних рисах
+                     обличчя та очах.</td>
+                  <td style="text-align: center;"><span class="dots" title="Видалити з колекції">•••</span></td>
+               </tr>
+
+            </tbody>
+         </table>
+      </div>
+
+   </main>
+
+</body>
 
 </html>
