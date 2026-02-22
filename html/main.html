@@ -1,115 +1,254 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="Noble Art — Галерея сучасного мистецтва">
+   <meta name="description" content="Noble Art">
    <meta name="author" content="Arseny">
 
    <title>Noble Art</title>
-   <link rel="stylesheet" href="/css/main.css">
 </head>
 
-
-<header>
+<header link="blue" vlink="purple" alink="red">
    <div class="logo-section">
-      <a href="/html/home.html" class="logo-icon">N</a>
-      <font face="Georgia" size="4"><b>Noble Art</b></font>
+      <a href="#" class="logo-icon"
+         style="text-decoration: none; background: #000; color: #fff; padding: 5px 10px; border-radius: 5px;">N</a>
+      <font face="Georgia" size="4"><b> Noble Art Gallery</b></font>
    </div>
 
-   <nav class="main-nav">
-      <a href="/html/schedule.html">Графік роботи</a>
-      <a href="/html/location.html">Розташування</a>
-   </nav>
+   <p>
+      <font color="blue">
+         <a href="schedule.html">Графік роботи та екскурсій</a>
+      </font>
+   </p>
+
+   <p>
+      <font color="green">
+         <a href="location.html">Як нас знайти</a>
+      </font>
+   </p>
+
+   <p>
+      <font color="purple">
+         <a href="location.html#map">Інтерактивна мапа залів</a>
+      </font>
+   </p>
+
+   <p>
+      <font color="red">
+         <a href="#selected_exhibits">Поточна експозиція</a>
+      </font>
+   </p>
 
    <div class="user-controls">
-      <a href="#" class="profile-link">
+      <a href="userProfile.html" class="profile-link">
          <span>Мій профіль</span>
-         <div class="avatar">JD</div>
       </a>
    </div>
 </header>
 
-<body>
+<body style="background-color: rgb(119, 117, 115); color: #f1f1f1;">
 
-   <div class="header-gallery">
-      <h1>Curated Artworks</h1>
-   </div>
+   <div style="margin: 20px;">
 
-
-   <div class="float-demo">
-      <div class="float-box" style="background-color: #ffd27d; color: #000; padding: 10px; font-weight: bold;">
-         <p>НОВИНКА</p>
-      </div>
-
-      <p>
-         <font size="3">
-            <b>Погляд крізь епохи:</b> Цього місяця ми представляємо унікальну серію полотен, що поєднують у собі
-            класичну техніку олійного живопису та сміливі експерименти сучасного авангарду. Кожна робота в цій колекції
-            була відібрана нашими кураторами, щоб надихнути вас на власні роздуми про вічне.
+      <p align="center">
+         <font face="Georgia" size="6" color="#ffffff">
+            <b>Welcome to Noble Art</b>
          </font>
       </p>
-   </div>
 
+      <p align="center">
+         <font face="Arial" size="4" color="#dddddd">
+            <i>Простір, де оживають полотна та застигає час</i>
+         </font>
+      </p>
 
-   <div class="container">
+      <p align="left">
+         <font face="Tahoma" size="3" color="#f1f1f1">
+            <b>Наша місія</b> — відкривати нові імена в сучасному живописі та зберігати велич класичної спадщини. Ми
+            зібрали понад <b>500 унікальних робіт</b> від майстрів з усього світу, щоб ви могли насолоджуватися
+            справжнім мистецтвом, не виходячи з дому. Кожна картина — це окрема історія, що чекає на свого глядача.
+         </font>
+      </p>
 
-      <div class="pin-item">
-         <a href="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5" target="_blank">
-            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=500" alt="Золотий Ренесанс">
-         </a>
-         <div class="pin-content">
-            <b>Золотий Ренесанс</b>
-            <p>
-               <font size="2">Епоха класики, олія</font>
-            </p>
-         </div>
-      </div>
-
-      <div class="pin-item">
-         <a href="https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3" target="_blank">
-            <img src="https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?q=80&w=500" alt="Абстракція">
-         </a>
-         <div class="pin-content">
-            <b>Геометрична абстракція</b>
-            <p>
-               <font size="2">Гра форм та кольору</font>
-            </p>
-         </div>
-      </div>
-
-      <div class="pin-item">
-         <a href="https://images.unsplash.com/photo-1549490349-8643362247b5" target="_blank">
-            <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=500" alt="Модернізм">
-         </a>
-         <div class="pin-content">
-            <b>Симфонія модерну</b>
-            <p>
-               <font size="2">Сучасна виставка</font>
-            </p>
-         </div>
-      </div>
-
-      <div class="pin-item">
-         <a href="https://images.unsplash.com/photo-1606819717115-9159c900370b?q=80&w=1170" target="_blank">
-            <img src="https://images.unsplash.com/photo-1606819717115-9159c900370b?q=80&w=1170" alt="Авангард">
-         </a>
-         <div class="pin-content">
-            <b>Енергія авангарду</b>
-            <p>
-               <font size="2">
-                  <span class="highlight-text">Експериментальне полотно</span>
-               </font>
-            </p>
-         </div>
-      </div>
+      <p align="right">
+         <font face="Courier New" size="3" color="#c7eaff">
+            <i>"Мистецтво змиває з душі пил повсякденного життя" — Пабло Пікассо</i>
+         </font>
+      </p>
 
    </div>
 
+   <hr>
 
-   <footer>
-      &copy; 2026 Noble Art Gallery Project — Світ, де мистецтво стає реальністю.
+   <div style="margin: 0 auto; text-align:center;">
+
+      <p>
+         <font face="Arial" size="4" color="#ffffff"><b>Ornate building corner on a snowy city street.</b></font>
+      </p>
+
+      <a id="picture1"
+         href="https://images.unsplash.com/photo-1771600093943-0a5370e845f5?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+         target="_blank">
+         <img
+            src="https://images.unsplash.com/photo-1771600093943-0a5370e845f5?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Портрет" width="240" height="160">
+      </a>
+
+      <br><br>
+
+      <p>
+         <font face="Arial" size="4" color="#ffffff"><b>Autodromo Nazionale Monza, Viale di Vedano, Monza, MB,
+               Italia</b></font>
+      </p>
+
+      <a id="picture2"
+         href="https://images.unsplash.com/photo-1683366498866-76d50595bf54?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+         target="_blank">
+         <img
+            src="https://images.unsplash.com/photo-1683366498866-76d50595bf54?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Етюд" width="120" height="80">
+      </a>
+
+      <br><br>
+
+      <p>
+         <font face="Arial" size="4" color="#ffffff"><b>Kyoto, Japan</b></font>
+      </p>
+
+      <a id="picture3"
+         href="https://images.unsplash.com/photo-1768310481123-9c8e4e6fc61a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+         target="_blank">
+         <img
+            src="https://images.unsplash.com/photo-1768310481123-9c8e4e6fc61a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Авангард" width="480" height="320">
+      </a>
+
+   </div>
+
+   <hr>
+
+   <div style="margin: 20px 0;">
+      <p align="left">
+         <font face="Georgia" size="4" color="#ffffff"><b>Гід по галереї</b></font>
+      </p>
+
+      <p>
+         <font face="Arial" size="3" color="#ffffff"><b>1) Жанри мистецтва в нашому фонді</b></font>
+      </p>
+
+      <ul type="square">
+         <li>
+            <font face="Tahoma" size="3" color="#f1f1f1">Пейзаж (природа та міські краєвиди)</font>
+         </li>
+         <li>
+            <font face="Tahoma" size="3" color="#f1f1f1"><i>Натюрморт</i> (гармонія предметів)</font>
+         </li>
+         <li>
+            <font face="Tahoma" size="3" color="#f1f1f1"><b>Сюрреалізм</b> (світ фантазій та снів)</font>
+         </li>
+      </ul>
+
+      <p>
+         <font face="Arial" size="3" color="#ffffff"><b>2) Етапи придбання картини</b></font>
+      </p>
+
+      <ol type="1">
+         <li>
+            <font face="Verdana" size="3" color="#f1f1f1">Вибір роботи в каталозі</font>
+         </li>
+         <li>
+            <font face="Verdana" size="3" color="#f1f1f1">Отримання сертифіката автентичності</font>
+         </li>
+         <li>
+            <font face="Verdana" size="3" color="#f1f1f1">Бережна доставка до вашої оселі</font>
+         </li>
+      </ol>
+
+      <p>
+         <font face="Arial" size="3" color="#ffffff"><b>3) Термінологія для відвідувачів</b></font>
+      </p>
+
+      <dl>
+         <dt>
+            <font face="Georgia" size="3" color="#ffd27d"><b>Експонат</b></font>
+         </dt>
+         <dd>
+            <font face="Tahoma" size="3" color="#f1f1f1">Окремий твір мистецтва (картина, скульптура, інсталяція), що
+               виставлений для огляду.</font>
+         </dd>
+
+         <dt>
+            <font face="Georgia" size="3" color="#ffd27d"><b>Вернісаж</b></font>
+         </dt>
+         <dd>
+            <font face="Tahoma" size="3" color="#f1f1f1">Урочисте відкриття художньої виставки, на якому присутні автори
+               та запрошені гості.</font>
+         </dd>
+
+         <dt>
+            <font face="Georgia" size="3" color="#ffd27d"><b>Багет</b></font>
+         </dt>
+         <dd>
+            <font face="Tahoma" size="3" color="#f1f1f1">Декоративна планка або рама, яка обрамляє картину, підкреслюючи
+               її стиль.</font>
+         </dd>
+      </dl>
+   </div>
+
+
+   <h2 id="selected_exhibits" style="text-align:center; margin-top:40px;">
+      Головні лоти сезону
+   </h2>
+
+   <table border="1" cellspacing="0" cellpadding="10" align="center" width="90%">
+      <thead style="background-color:#3b3b3b; color:white;">
+         <tr>
+            <th>"Ornate building corner "</th>
+            <th>"Autodromo Nazionale Monza"</th>
+            <th>"Mt. Rainier "</th>
+            <th>"Kyoto, Japan"</th>
+         </tr>
+      </thead>
+
+      <tbody>
+
+         <tr align="center">
+            <td><img
+                  src="https://images.unsplash.com/photo-1771600093943-0a5370e845f5?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  width="150" alt="Лот 1"></td>
+            <td><img
+                  src="https://images.unsplash.com/photo-1683366498866-76d50595bf54?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  width="400" alt="Лот 2"></td>
+            <td><img
+                  src="https://images.unsplash.com/photo-1729188430376-e3908f87e7f0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDExMXw2c01WalRMU2tlUXx8ZW58MHx8fHx8"
+                  width="150" alt="Лот 3">
+            </td>
+            <td><img
+                  src="https://images.unsplash.com/photo-1768310481123-9c8e4e6fc61a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  width="150" alt="Лот 4"></td>
+         </tr>
+
+
+         <tr align="center">
+            <td><a href="#picture1" style="color: #ffd27d;">Детальніше</a></td>
+            <td><a href="#picture2" style="color: #ffd27d;">Детальніше</a></td>
+            <td><a href="#" style="color: #ffd27d;">Детальніше</a></td>
+            <td><a href="#picture3" style="color: #ffd27d;">Детальніше</a></td>
+         </tr>
+
+         <tr align="center">
+            <td>Ornate building corner on a snowy city street</td>
+            <td>Autodromo Nazionale Monza, Viale di Vedano, Monza, MB, Italia</td>
+            <td>Mt. Rainier during sunset</td>
+            <td>Kyoto, Japan</td>
+         </tr>
+      </tbody>
+   </table>
+
+   <footer style="text-align: center; padding: 30px; margin-top: 50px; border-top: 1px solid #555;">
+      &copy; 2026 Noble Art Gallery — Ми робимо мистецтво ближчим.
    </footer>
 </body>
 
