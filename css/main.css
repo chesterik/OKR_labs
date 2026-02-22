@@ -65,6 +65,20 @@ header {
    gap: 20px;
 }
 
+.user-controls span {
+   text-decoration: none;
+   color: #111;
+   font-weight: 600;
+   font-size: 15px;
+   padding: 10px 15px;
+   transition: 0.3s;
+}
+
+.user-controls a:hover {
+   background-color: #efefef;
+   border-radius: 500px;
+}
+
 .profile-link {
    display: flex;
    align-items: center;
