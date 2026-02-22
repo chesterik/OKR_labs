@@ -5,6 +5,7 @@
    --text-dark: #1a1a1a;
 }
 
+
 body {
    background-color: var(--bg-color);
    font-family: 'Segoe UI', Roboto, sans-serif;
@@ -27,9 +28,25 @@ body a:hover {
    transition: 0.3s;
 }
 
+
 .main-nav {
    display: flex;
    gap: 25px;
+}
+
+.main-nav a:hover {
+   background-color: var(--accent);
+   color: white;
+}
+
+.header-gallery>h1 {
+   font-family: 'Georgia', serif;
+   font-size: clamp(2rem, 5vw, 4rem);
+   color: var(--accent);
+   text-align: center;
+   margin-left: 0;
+   margin-bottom: 30px;
+   padding: 0 20px;
 }
 
 .user-controls span {
@@ -45,14 +62,18 @@ body a:hover {
    color: white;
 }
 
-.header-gallery>h1 {
-   font-family: 'Georgia', serif;
-   font-size: 4rem;
-   color: var(--accent);
-   text-align: center;
-   margin-left: 0;
-   margin-bottom: 30px;
-   padding: 0 20px;
+
+.header-gallery h1::before {
+   content: "( ";
+}
+
+.header-gallery h1::after {
+   content: " )";
+}
+
+
+.float-box p::after {
+   content: "! ";
 }
 
 .pin-content b+p {
@@ -61,9 +82,9 @@ body a:hover {
    font-style: italic;
 }
 
-.pin-item~.pin-item {
+/* .pin-item~.pin-item {
    opacity: 0.6;
-}
+} */
 
 header {
    position: fixed;
@@ -127,6 +148,10 @@ header {
    display: block;
 }
 
+.pin-item:first-child {
+   border: 3px solid var(--accent);
+}
+
 .pin-content {
    padding: 15px;
 }
@@ -143,12 +168,62 @@ header {
    font-size: 14px;
 }
 
+.avatar {
+   float: right;
+}
+
+
 .profile-link {
    display: flex;
    align-items: center;
    gap: 10px;
    text-decoration: none;
    color: var(--text-dark);
+}
+
+a:link {
+   color: var(--accent);
+}
+
+a:visited {
+   color: #6b6b6b;
+}
+
+a:hover {
+   color: white;
+   background-color: var(--accent);
+}
+
+a:active {
+   color: red;
+}
+
+.highlight-text {
+   color: aqua;
+   font-style: italic;
+}
+
+.float-demo {
+   margin: 30px auto;
+   width: 80%;
+   background: #ffffff;
+   padding: 20px;
+   border-radius: 12px;
+   overflow: hidden;
+}
+
+.float-box {
+   float: right;
+   width: 120px;
+   height: 120px;
+   background: #023020;
+   color: white;
+   font-weight: bold;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-left: 15px;
+   border-radius: 12px;
 }
 
 .new-text p {
