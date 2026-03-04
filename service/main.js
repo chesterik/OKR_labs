@@ -10,78 +10,78 @@ function openPainting(imgSrc, title) {
    if (document.getElementById('gallery-modal')) return;
 
    const styles = `
-        <style id="gallery-styles">
-            .overlay {
-                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-                background: rgba(5, 5, 5, 0.95); 
-                backdrop-filter: blur(10px);
-                z-index: 10000;
-                display: flex; flex-direction: column; align-items: center; justify-content: center;
-                opacity: 0; 
-                transition: opacity 0.2s ease;
-            }
-            .overlay.open { opacity: 1; }
-            .img-container {
-                position: relative; max-width: 90%; max-height: 70vh;
-                display: flex; justify-content: center; margin-bottom: 40px;
-            }
-            .img-container img {
-                max-width: 100%; max-height: 70vh;
-                border-radius: 8px;
-                box-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
-                display: block;
-            }
-            .modal-title {
-                color: #fff; font-family: 'Georgia', serif; font-size: 24px;
-                letter-spacing: 1px; margin-bottom: 20px; text-align: center;
-            }
-            .controls-bar {
-                position: absolute; bottom: 40px;
-                background: rgba(255, 255, 255, 0.1);
-                backdrop-filter: blur(20px);
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                padding: 10px 10px 10px 20px;
-                border-radius: 100px;
-                display: flex; gap: 15px; align-items: center;
-                box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            }
-            .btn-close {
-                background: transparent; border: none; color: #aaa;
-                font-size: 14px; font-weight: 600; cursor: pointer;
-                padding: 10px 20px; transition: 0.3s;
-            }
-            .btn-close:hover { color: #fff; }
-            .btn-add {
-                background: cornflowerblue; 
-                color: #fff; border: none;
-                padding: 12px 30px; border-radius: 50px;
-                font-weight: 700; cursor: pointer;
-                transition: 0.3s;
-                display: flex; align-items: center; gap: 8px;
-            }
-            .btn-add:hover {
-                background: #fff; color: #000;
-                box-shadow: 0 0 20px rgba(255,255,255,0.4);
-            }
-        </style>
-    `;
+         <style id="gallery-styles">
+               .overlay {
+                  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                  background: rgba(5, 5, 5, 0.95); 
+                  backdrop-filter: blur(10px);
+                  z-index: 10000;
+                  display: flex; flex-direction: column; align-items: center; justify-content: center;
+                  opacity: 0; 
+                  transition: opacity 0.2s ease;
+               }
+               .overlay.open { opacity: 1; }
+               .img-container {
+                  position: relative; max-width: 90%; max-height: 70vh;
+                  display: flex; justify-content: center; margin-bottom: 40px;
+               }
+               .img-container img {
+                  max-width: 100%; max-height: 70vh;
+                  border-radius: 8px;
+                  box-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
+                  display: block;
+               }
+               .modal-title {
+                  color: #fff; font-family: 'Georgia', serif; font-size: 24px;
+                  letter-spacing: 1px; margin-bottom: 20px; text-align: center;
+               }
+               .controls-bar {
+                  position: absolute; bottom: 40px;
+                  background: rgba(255, 255, 255, 0.1);
+                  backdrop-filter: blur(20px);
+                  border: 1px solid rgba(255, 255, 255, 0.1);
+                  padding: 10px 10px 10px 20px;
+                  border-radius: 100px;
+                  display: flex; gap: 15px; align-items: center;
+                  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+               }
+               .btn-close {
+                  background: transparent; border: none; color: #aaa;
+                  font-size: 14px; font-weight: 600; cursor: pointer;
+                  padding: 10px 20px; transition: 0.3s;
+               }
+               .btn-close:hover { color: #fff; }
+               .btn-add {
+                  background: cornflowerblue; 
+                  color: #fff; border: none;
+                  padding: 12px 30px; border-radius: 50px;
+                  font-weight: 700; cursor: pointer;
+                  transition: 0.3s;
+                  display: flex; align-items: center; gap: 8px;
+               }
+               .btn-add:hover {
+                  background: #fff; color: #000;
+                  box-shadow: 0 0 20px rgba(255,255,255,0.4);
+               }
+         </style>
+      `;
 
    const html = `
-        <div id="gallery-modal" class="overlay" onclick="if(event.target === this) closeModal()">
-            <h2 class="modal-title">${title}</h2>
-            
-            <div class="img-container">
-                <img src="${imgSrc}" alt="${title}">
-            </div>
+         <div id="gallery-modal" class="overlay" onclick="if(event.target === this) closeModal()">
+               <h2 class="modal-title">${title}</h2>
+               
+               <div class="img-container">
+                  <img src="${imgSrc}" alt="${title}">
+               </div>
 
-            <div class="controls-bar">
-                <button class="btn-close" onclick="closeModal()">Закрити</button>
-                <button class="btn-add" onclick="addToProfile()">
-                    <span>+</span> Додати в колекцію
-                </button>
-            </div>
-        </div>
-    `;
+               <div class="controls-bar">
+                  <button class="btn-close" onclick="closeModal()">Закрити</button>
+                  <button class="btn-add" onclick="addToProfile()">
+                     <span>+</span> Додати в колекцію
+                  </button>
+               </div>
+         </div>
+      `;
 
    document.body.insertAdjacentHTML('beforeend', styles + html);
 
@@ -145,7 +145,6 @@ function sendMessage(user) {
    const msg = document.createElement('div');
    msg.classList.add('msg', user === 1 ? 'user1' : 'user2');
 
-   // --- ТЗ: document.createTextNode (створення текстового вузла) ---
    const textNode = document.createTextNode(text);
 
    const label = document.createElement('span');
@@ -154,20 +153,17 @@ function sendMessage(user) {
    label.style.opacity = "0.6";
    label.textContent = `USER ${user}`;
 
-   // --- ТЗ: node.prepend (вставка на початок елемента) ---
-   msg.prepend(label); // Спочатку лейбл
-   msg.append(textNode); // Потім текст повідомлення
-
+   msg.prepend(label);
+   msg.append(textNode);
    chatBox.append(msg);
 
-   // --- ТЗ: node.after (вставка після елемента - додамо час) ---
    const timeStamp = document.createElement('div');
    timeStamp.style.fontSize = "8px";
    timeStamp.style.textAlign = user === 1 ? "left" : "right";
    timeStamp.style.color = "#555";
    timeStamp.textContent = new Date().toLocaleTimeString();
 
-   msg.after(timeStamp); // Вставляємо час ПІСЛЯ повідомлення
+   msg.after(timeStamp);
 
    ta.value = '';
    chatBox.scrollTop = chatBox.scrollHeight;
