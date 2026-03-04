@@ -88,6 +88,8 @@ function openPainting(imgSrc, title) {
    setTimeout(() => {
       document.getElementById('gallery-modal').classList.add('open');
    }, 10);
+
+   console.log(document.documentElement.outerHTML);
 }
 
 window.closeModal = function () {

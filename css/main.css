@@ -22,8 +22,6 @@ body {
    padding-top: 100px;
 }
 
-/* console.log(document.documentElement.outerHTML); */
-
 header {
    position: fixed;
    top: 20px;
