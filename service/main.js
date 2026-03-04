@@ -90,6 +90,11 @@ function openPainting(imgSrc, title) {
    }, 10);
 
    console.log(document.documentElement.outerHTML);
+
+   const mainTitle = document.getElementById('main-title');
+   if (mainTitle && mainTitle.firstChild) {
+      console.log("Node Value заголовка:", mainTitle.firstChild.nodeValue);
+   }
 }
 
 window.closeModal = function () {
@@ -139,12 +144,34 @@ function sendMessage(user) {
    const chatBox = document.getElementById('chat');
    const msg = document.createElement('div');
    msg.classList.add('msg', user === 1 ? 'user1' : 'user2');
-   msg.innerHTML = `<span class="user-label" style="font-size:10px; display:block; opacity:0.6;">USER ${user}</span>${text}`;
+
+   // --- ТЗ: document.createTextNode (створення текстового вузла) ---
+   const textNode = document.createTextNode(text);
+
+   const label = document.createElement('span');
+   label.style.fontSize = "10px";
+   label.style.display = "block";
+   label.style.opacity = "0.6";
+   label.textContent = `USER ${user}`;
+
+   // --- ТЗ: node.prepend (вставка на початок елемента) ---
+   msg.prepend(label); // Спочатку лейбл
+   msg.append(textNode); // Потім текст повідомлення
 
    chatBox.append(msg);
+
+   // --- ТЗ: node.after (вставка після елемента - додамо час) ---
+   const timeStamp = document.createElement('div');
+   timeStamp.style.fontSize = "8px";
+   timeStamp.style.textAlign = user === 1 ? "left" : "right";
+   timeStamp.style.color = "#555";
+   timeStamp.textContent = new Date().toLocaleTimeString();
+
+   msg.after(timeStamp); // Вставляємо час ПІСЛЯ повідомлення
+
    ta.value = '';
    chatBox.scrollTop = chatBox.scrollHeight;
-};
+}
 
 function searchPainting() {
    const query = prompt("Введіть назву картини, яку шукаєте:");
@@ -210,6 +237,24 @@ function userDialog() {
       result += `${i + 1}. ${titles[i].textContent}\n`;
    }
    alert(result);
+}
+
+function clearChat() {
+   const chatBox = document.getElementById('chat');
+   const btn = document.getElementById('clear-btn');
+
+   chatBox.innerHTML = '';
+
+   const statusMsg = document.createElement('span');
+   statusMsg.textContent = "Очищено!";
+   statusMsg.style.color = "green";
+   statusMsg.style.fontWeight = "bold";
+   statusMsg.style.padding = "5px 10px";
+   btn.replaceWith(statusMsg);
+
+   setTimeout(() => {
+      statusMsg.replaceWith(btn);
+   }, 2000);
 }
 
 

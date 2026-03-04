@@ -370,6 +370,39 @@ a:active {
    animation: fadeIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
+.clear-btn {
+   background: var(--accent);
+   /* Використовуємо твій основний колір */
+   color: #fff;
+   border: none;
+   padding: 8px 24px;
+   border-radius: 50px;
+   /* Стиль "пігулки", як у інших кнопок */
+   cursor: pointer;
+   font-family: 'Segoe UI', sans-serif;
+   font-weight: 600;
+   font-size: 13px;
+   text-transform: uppercase;
+   letter-spacing: 0.5px;
+   transition: all 0.3s ease;
+   box-shadow: 0 4px 10px rgba(2, 48, 32, 0.15);
+   /* Легка тінь */
+}
+
+/* Ефект при наведенні */
+.clear-btn:hover {
+   background: #034d34;
+   /* Трохи світліший/інакший відтінок */
+   transform: translateY(-2px);
+   box-shadow: 0 6px 15px rgba(2, 48, 32, 0.25);
+}
+
+/* Ефект натискання */
+.clear-btn:active {
+   transform: translateY(0);
+   box-shadow: 0 2px 5px rgba(2, 48, 32, 0.1);
+}
+
 @keyframes fadeIn {
    from {
       opacity: 0;

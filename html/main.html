@@ -9,6 +9,7 @@
    <title>Noble Art</title>
    <link rel="stylesheet" href="/css/main.css">
    <script>
+      document.write("");
       document.addEventListener('DOMContentLoaded', () => {
          const titles = document.querySelectorAll('.pin-content b');
 
@@ -136,7 +137,10 @@
    </div>
 
    <div class="chat-section">
-      <h2>Діалог з користувачем</h2>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+         <h2 style="margin: 0;">Діалог з користувачем</h2>
+         <button id="clear-btn" class="clear-btn" onclick="clearChat()">Очистити чат</button>
+      </div>
       <div class="chat-wrapper">
          <div class="input-panel">
             <h3>Користувач 1</h3>

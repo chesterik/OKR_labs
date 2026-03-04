@@ -78,39 +78,3 @@ window.searchTable = function () {
    }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-// function searchPainting() {
-//    const input = document.getElementById('searchInput');
-//    const filter = input.value.toLowerCase();
-//    const rows = document.getElementById('collectionBody').getElementsByTagName('tr');
-
-//    if (query) {
-//       const cards = document.querySelectorAll('.pin-item');
-//       let found = false;
-
-//       cards.forEach(card => {
-//          const title = card.querySelector('b').innerText.toLowerCase();
-//          if (title.includes(query.toLowerCase())) {
-//             card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-// card.style.outline = "5px solid cornflowerblue";
-//    setTimeout(() => card.style.outline = "none", 3000);
-//    found = true;
-// }
-//       });
-
-//       if (!found) {
-//          alert("Картину '" + query + "' не знайдено.");
-//       }
-//    }
-// }
