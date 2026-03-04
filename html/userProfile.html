@@ -4,37 +4,47 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Noble Art</title>
+   <title>Noble Art - Профіль</title>
    <link rel="stylesheet" href="/css/userProfile.css">
+   <script src="/service/userProfile.js"></script>
+   <style>
+      /* Стилі для кнопки видалення */
+      .delete-btn {
+         background: transparent;
+         border: none;
+         cursor: pointer;
+         color: #ff4444;
+         font-size: 20px;
+      }
+
+      .delete-btn:hover {
+         color: #cc0000;
+      }
+   </style>
 </head>
 
 <body>
 
-
    <aside class="sidebar">
       <div class="logo">Noble Art</div>
-
       <div class="user-profile">
          <div class="user-info">
             <h3>Root</h3>
             <p>owner</p>
          </div>
       </div>
-
       <ul class="nav-menu">
          <li><a href="#mycollection" class="active">Моя колекція</a></li>
-         <li><a href="main.html" class="logout">Вийти з акаунта</a></li>
+         <li><a href="/html/main.html" class="logout">На головну</a></li>
       </ul>
    </aside>
 
    <main class="main-content">
-
       <h1 id="mycollection">Моя колекція</h1>
 
       <div class="card">
-
          <div class="search-box">
-            <input type="text" placeholder="Пошук по збережених...">
+            <input type="text" id="searchInput" placeholder="Пошук по збережених..." onkeyup="searchTable()">
          </div>
 
          <table>
@@ -45,54 +55,10 @@
                   <th style="width: 10%; text-align: center;">Дії</th>
                </tr>
             </thead>
-            <tbody>
-
-               <tr>
-                  <td>
-                     <div class="art-item">
-                        <img
-                           src="https://images.unsplash.com/photo-1771600093943-0a5370e845f5?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                           width="150" alt="Картина">
-                        <span>Ornate building corner on a snowy city street</span>
-                     </div>
-                  </td>
-                  <td>Вишукана класична архітектура на розі міської вулиці взимку. Кадр чудово передає холодну, але
-                     спокійну атмосферу засніженого мегаполіса.</td>
-                  <td style="text-align: center;"><span class="dots" title="Видалити з колекції">•••</span></td>
-               </tr>
-
-               <tr>
-                  <td>
-                     <div class="art-item">
-                        <img
-                           src="https://images.unsplash.com/photo-1683366498866-76d50595bf54?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                           width="150" alt="Картина">
-                        <span>Autodromo Nazionale Monza</span>
-                     </div>
-                  </td>
-                  <td>Динамічне фото яскравого гоночного автомобіля на великій швидкості. Знято на легендарній
-                     італійській автотрасі в Монці.</td>
-                  <td style="text-align: center;"><span class="dots" title="Видалити з колекції">•••</span></td>
-               </tr>
-
-               <tr>
-                  <td>
-                     <div class="art-item">
-                        <img
-                           src="https://images.unsplash.com/photo-1768310481123-9c8e4e6fc61a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                           width="150" alt="Картина">
-                        <span>Kyoto, Japan</span>
-                     </div>
-                  </td>
-                  <td>Мальовничий пейзаж традиційної японської архітектури. Яскраво-червона багатоярусна пагода
-                     гармонійно виділяється на тлі туманного осіннього лісу.</td>
-                  <td style="text-align: center;"><span class="dots" title="Видалити з колекції">•••</span></td>
-               </tr>
-
+            <tbody id="collectionBody">
             </tbody>
          </table>
       </div>
-
    </main>
 
 </body>

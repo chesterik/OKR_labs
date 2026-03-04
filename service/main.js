@@ -1,8 +1,12 @@
+let currentArt = {};
+
 document.querySelector("#location").onclick = () => {
    window.location.href = '/html/location.html';
 };
 
 function openPainting(imgSrc, title) {
+   currentArt = { src: imgSrc, title: title };
+
    if (document.getElementById('gallery-modal')) return;
 
    const styles = `
@@ -16,34 +20,21 @@ function openPainting(imgSrc, title) {
                 opacity: 0; 
                 transition: opacity 0.2s ease;
             }
-            
-            .overlay.open {
-                opacity: 1;
-            }
-
+            .overlay.open { opacity: 1; }
             .img-container {
-                position: relative;
-                max-width: 90%; max-height: 70vh;
-                display: flex; justify-content: center;
-                margin-bottom: 40px;
+                position: relative; max-width: 90%; max-height: 70vh;
+                display: flex; justify-content: center; margin-bottom: 40px;
             }
-            
             .img-container img {
                 max-width: 100%; max-height: 70vh;
                 border-radius: 8px;
                 box-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
                 display: block;
             }
-
             .modal-title {
-                color: #fff;
-                font-family: 'Georgia', serif;
-                font-size: 24px;
-                letter-spacing: 1px;
-                margin-bottom: 20px;
-                text-align: center;
+                color: #fff; font-family: 'Georgia', serif; font-size: 24px;
+                letter-spacing: 1px; margin-bottom: 20px; text-align: center;
             }
-
             .controls-bar {
                 position: absolute; bottom: 40px;
                 background: rgba(255, 255, 255, 0.1);
@@ -54,14 +45,12 @@ function openPainting(imgSrc, title) {
                 display: flex; gap: 15px; align-items: center;
                 box-shadow: 0 20px 40px rgba(0,0,0,0.4);
             }
-
             .btn-close {
                 background: transparent; border: none; color: #aaa;
                 font-size: 14px; font-weight: 600; cursor: pointer;
                 padding: 10px 20px; transition: 0.3s;
             }
             .btn-close:hover { color: #fff; }
-
             .btn-add {
                 background: cornflowerblue; 
                 color: #fff; border: none;
@@ -87,7 +76,7 @@ function openPainting(imgSrc, title) {
 
             <div class="controls-bar">
                 <button class="btn-close" onclick="closeModal()">Закрити</button>
-                <button class="btn-add" onclick="alert('Додано!'); closeModal()">
+                <button class="btn-add" onclick="addToProfile()">
                     <span>+</span> Додати в колекцію
                 </button>
             </div>
@@ -101,16 +90,38 @@ function openPainting(imgSrc, title) {
    }, 10);
 }
 
-window.closeModal = () => {
+window.closeModal = function () {
    const modal = document.getElementById('gallery-modal');
    if (modal) {
       modal.classList.remove('open');
       setTimeout(() => {
          modal.remove();
-         const styleElement = document.getElementById('gallery-styles');
-         if (styleElement) styleElement.remove();
+         const s = document.getElementById('gallery-styles');
+         if (s) s.remove();
       }, 200);
    }
+};
+
+window.addToProfile = function () {
+   console.log("Спроба додати:", currentArt);
+
+   let collection = JSON.parse(localStorage.getItem('nobleCollection')) || [];
+
+   const exists = collection.some(item => item.src === currentArt.src);
+
+   if (!exists) {
+      currentArt.date = new Date().toLocaleDateString();
+      currentArt.desc = "Додано з головної галереї";
+
+      collection.push(currentArt);
+      localStorage.setItem('nobleCollection', JSON.stringify(collection));
+
+      alert('Успішно збережено в колекцію!');
+   } else {
+      alert('Ця картина вже є у вашій колекції.');
+   }
+
+   closeModal();
 };
 
 function showDeveloperInfo(name, position = "Owner") {
@@ -131,7 +142,7 @@ function sendMessage(user) {
    chatBox.append(msg);
    ta.value = '';
    chatBox.scrollTop = chatBox.scrollHeight;
-}
+};
 
 function searchPainting() {
    const query = prompt("Введіть назву картини, яку шукаєте:");
@@ -157,62 +168,47 @@ function searchPainting() {
 }
 
 function userDialog() {
-
    const isReady = confirm("Бажаєте дізнатися кількість картин у галереї?");
-
    if (!isReady) {
       alert("Діалог скасовано.");
       return;
    }
-
    const titles = document.querySelectorAll('.pin-content b');
-
    if (titles.length === 0) {
       alert("У галереї наразі немає картин.");
       return;
    }
-
    let count = prompt(
       `Скільки картин ви хочете проаналізувати? (1 - ${titles.length})`,
       "3"
    );
-
    if (count === null) {
       alert("Введення скасовано.");
       return;
    }
-
    count = Number(count);
-
    if (isNaN(count)) {
       alert("Будь ласка, введіть числове значення.");
       return;
    }
-
    if (!Number.isInteger(count)) {
       alert("Потрібно ввести ціле число.");
       return;
    }
-
    if (count <= 0) {
       alert("Кількість має бути більшою за 0.");
       return;
    }
-
    if (count > titles.length) {
       alert(`У галереї лише ${titles.length} картин.`);
       return;
    }
-
    let result = `Ось назви перших ${count} картин:\n\n`;
-
    for (let i = 0; i < count; i++) {
       result += `${i + 1}. ${titles[i].textContent}\n`;
    }
-
    alert(result);
 }
-
 
 
 
