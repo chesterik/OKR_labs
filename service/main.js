@@ -291,16 +291,6 @@ if (commandPanel) {
    };
 }
 
-function runCommand(action) {
-   switch (action) {
-      case 'save':
-         statusBox.innerText = "Система: Збереження логів...";
-         console.log("Saving...");
-         break;
-   }
-   setTimeout(() => statusBox.innerText = "", 2000);
-}
-
 document.addEventListener('click', function (event) {
 
    const target = event.target.closest('[data-action]');
@@ -321,10 +311,6 @@ function runCommand(action, btnElement) {
             statusBox.innerText = "Система: Налаштування збережено!";
             statusBox.style.color = "green";
          }
-         break;
-
-      case 'report':
-         alert("Скаргу відправлено адміністратору.");
          break;
 
       case 'theme':
