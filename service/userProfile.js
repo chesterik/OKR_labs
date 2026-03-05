@@ -60,3 +60,4 @@ window.searchTable = () => {
       }
    });
 };
+
