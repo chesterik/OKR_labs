@@ -156,9 +156,49 @@
       </div>
    </div>
 
+   <div id="tracker-panel" class="tracker-hidden">
+      <div class="tracker-content">
+         <small>Координати миші:</small>
+         <div id="tracker-coords">X: 0 | Y: 0</div>
+         <div id="tracker-click">Очікування кліку...</div>
+      </div>
+   </div>
+
    <footer>
-      <p>&copy; 2026 Noble Art Project <button id="author-btn" class="js-btn-footer">Про автора</button> </p>
+      <hr>
+      <div class="footer-container">
+
+         <div class="footer-col">
+            <h4>Категорії (Delegation)</h4>
+            <ul id="footer-categories" class="footer-list">
+               <li>Архітектура</li>
+               <li>Природа</li>
+               <li>Міста</li>
+               <li>Тварини</li>
+            </ul>
+         </div>
+
+         <div class="footer-col">
+            <h4>Управління (Command)</h4>
+            <div id="footer-commands" class="footer-btns">
+               <button data-action="save">💾 Зберегти лог</button>
+               <button data-action="report">⚠️ Скарга</button>
+            </div>
+            <div id="cmd-status" style="font-size: 10px; color: #c5a059; margin-top: 5px;"></div>
+         </div>
+
+         <div class="footer-col">
+            <h4>Інструменти</h4>
+            <button id="toggle-tracker-btn">Увімкнути трекер миші</button>
+            <p style="margin-top: 10px;">&copy; 2026 Noble Art Project <button id="author-btn" class="js-btn-footer">Про
+                  автора</button></p>
+         </div>
+
+      </div>
    </footer>
+   <button id="theme-fab" class="floating-theme-btn" data-action="theme" title="Перемикач теми">
+      🌙
+   </button>
 </body>
 
 </html>

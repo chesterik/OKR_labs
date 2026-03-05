@@ -4,7 +4,6 @@
    --yellow: #817b0b;
    --text-dark: #000000;
 
-   --accent: #023020;
    --bg-light: #f4f7f6;
    --msg-user1: #f0f2f5;
    --msg-user2: #023020;
@@ -372,12 +371,10 @@ a:active {
 
 .clear-btn {
    background: var(--accent);
-   /* Використовуємо твій основний колір */
    color: #fff;
    border: none;
    padding: 8px 24px;
    border-radius: 50px;
-   /* Стиль "пігулки", як у інших кнопок */
    cursor: pointer;
    font-family: 'Segoe UI', sans-serif;
    font-weight: 600;
@@ -386,18 +383,14 @@ a:active {
    letter-spacing: 0.5px;
    transition: all 0.3s ease;
    box-shadow: 0 4px 10px rgba(2, 48, 32, 0.15);
-   /* Легка тінь */
 }
 
-/* Ефект при наведенні */
 .clear-btn:hover {
    background: #034d34;
-   /* Трохи світліший/інакший відтінок */
    transform: translateY(-2px);
    box-shadow: 0 6px 15px rgba(2, 48, 32, 0.25);
 }
 
-/* Ефект натискання */
 .clear-btn:active {
    transform: translateY(0);
    box-shadow: 0 2px 5px rgba(2, 48, 32, 0.1);
@@ -449,6 +442,219 @@ a:active {
 .js-btn-footer:hover {
    background-color: #044b33;
    color: white;
+}
+
+.footer-container {
+   display: flex;
+   justify-content: space-around;
+   flex-wrap: wrap;
+   text-align: left;
+   max-width: 1200px;
+   margin: 0 auto;
+   gap: 20px;
+}
+
+.footer-col h4 {
+   color: #c5a059;
+   margin-bottom: 15px;
+}
+
+.footer-list {
+   list-style: none;
+   padding: 0;
+}
+
+.footer-list li {
+   padding: 5px 0;
+   cursor: pointer;
+   transition: color 0.2s;
+}
+
+.footer-list li:hover {
+   color: black;
+   text-decoration: underline;
+}
+
+.footer-btns button {
+   display: block;
+   background: transparent;
+   border: 1px solid #444;
+   color: #888;
+   padding: 5px 10px;
+   margin-bottom: 5px;
+   cursor: pointer;
+   border-radius: 4px;
+}
+
+.footer-btns button:hover {
+   border-color: #c5a059;
+   color: #c5a059;
+}
+
+#tracker-panel {
+   position: fixed;
+   right: -200px;
+   top: 50%;
+   transform: translateY(-50%);
+   width: 180px;
+   background: rgba(0, 0, 0, 0.85);
+   color: #0f0;
+   padding: 15px;
+   border-radius: 10px 0 0 10px;
+   border-left: 2px solid #c5a059;
+   font-family: monospace;
+   z-index: 9999;
+   transition: right 0.3s ease;
+   backdrop-filter: blur(5px);
+}
+
+#tracker-panel.active {
+   right: 0;
+}
+
+#tracker-coords {
+   font-size: 14px;
+   margin: 10px 0;
+   font-weight: bold;
+}
+
+#tracker-click {
+   font-size: 11px;
+   color: #c5a059;
+   word-break: break-all;
+}
+
+.btn-like {
+   background: rgba(255, 255, 255, 0.1);
+   border: 1px solid rgba(255, 255, 255, 0.2);
+   color: #fff;
+   padding: 12px 20px;
+   border-radius: 50px;
+   cursor: pointer;
+   display: flex;
+   align-items: center;
+   gap: 8px;
+   font-size: 14px;
+   transition: 0.3s;
+}
+
+.btn-like:hover {
+   background: rgba(255, 0, 0, 0.2);
+   border-color: red;
+}
+
+.btn-like.liked {
+   background: red;
+   border-color: red;
+   box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+}
+
+
+.floating-theme-btn {
+   position: fixed;
+   bottom: 30px;
+   right: 30px;
+   width: 60px;
+   height: 60px;
+   border-radius: 50%;
+   background-color: #023020;
+   color: #fff;
+   border: none;
+   font-size: 24px;
+   cursor: pointer;
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+   z-index: 9990;
+   transition: all 0.3s ease;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.floating-theme-btn:hover {
+   transform: scale(1.1) rotate(15deg);
+   background-color: #034d34;
+}
+
+
+body.dark-mode {
+   background-color: #121212;
+   color: #e0e0e0;
+}
+
+body.dark-mode .pin-item,
+body.dark-mode .input-panel,
+body.dark-mode .chat-section,
+body.dark-mode footer {
+   background-color: #1e1e1e !important;
+   color: #e0e0e0 !important;
+   border-color: #333 !important;
+   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode header {
+   background-color: rgba(30, 30, 30, 0.85) !important;
+   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+
+body.dark-mode .main-nav a,
+body.dark-mode .user-controls a {
+   color: #fff !important;
+}
+
+body.dark-mode .main-nav a:hover {
+   background-color: #fff;
+   color: #000 !important;
+}
+
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode #main-title {
+   color: #ffffff !important;
+   text-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+}
+
+
+body.dark-mode .pin-content {
+   background-color: #1e1e1e;
+}
+
+body.dark-mode .pin-content b {
+   color: #fff;
+   font-size: 1.1em;
+}
+
+body.dark-mode .pin-content p {
+   color: #aaa;
+}
+
+
+body.dark-mode textarea {
+   background-color: #2c2c2c;
+   color: #fff;
+   border: 1px solid #444;
+}
+
+body.dark-mode textarea:focus {
+   border-color: #fff;
+   background-color: #333;
+}
+
+
+body.dark-mode .user1 {
+   background-color: #333;
+   color: #fff;
+}
+
+
+body.dark-mode .floating-theme-btn {
+   background-color: #fff;
+   color: #000;
+   box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+   border: 2px solid #000;
 }
 
 footer {
