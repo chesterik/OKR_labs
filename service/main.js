@@ -95,7 +95,7 @@ function openPainting(imgSrc, title) {
    }, 10);
 }
 
-window.closeModal = function () {
+window.closeModal = () => {
    const modal = document.getElementById('gallery-modal');
    if (modal) {
       modal.classList.remove('open');
@@ -107,7 +107,7 @@ window.closeModal = function () {
    }
 };
 
-window.addToProfile = function () {
+window.addToProfile = () => {
    let collection = JSON.parse(localStorage.getItem('nobleCollection')) || [];
    const exists = collection.some(item => item.src === currentArt.src);
 
@@ -161,16 +161,68 @@ function searchPainting() {
 }
 
 function userDialog() {
-   alert("Функціонал діалогу тимчасово відключено.");
+   const isReady = confirm("Бажаєте дізнатися кількість картин у галереї?");
+   if (!isReady) {
+      alert("Діалог скасовано.");
+      return;
+   }
+   const titles = document.querySelectorAll('.pin-content b');
+   if (titles.length === 0) {
+      alert("У галереї наразі немає картин.");
+      return;
+   }
+   let count = prompt(
+      `Скільки картин ви хочете проаналізувати? (1 - ${titles.length})`,
+      "3"
+   );
+   if (count === null) {
+      alert("Введення скасовано.");
+      return;
+   }
+   count = Number(count);
+   if (isNaN(count)) {
+      alert("Будь ласка, введіть числове значення.");
+      return;
+   }
+   if (!Number.isInteger(count)) {
+      alert("Потрібно ввести ціле число.");
+      return;
+   }
+   if (count <= 0) {
+      alert("Кількість має бути більшою за 0.");
+      return;
+   }
+   if (count > titles.length) {
+      alert(`У галереї лише ${titles.length} картин.`);
+      return;
+   }
+   let result = `Ось назви перших ${count} картин:\n\n`;
+   for (let i = 0; i < count; i++) {
+      result += `${i + 1}. ${titles[i].textContent}\n`;
+   }
+   alert(result);
 }
+
 
 function clearChat() {
-   document.getElementById('chat').innerHTML = '';
+   const chatBox = document.getElementById('chat');
+   const btn = document.getElementById('clear-btn');
+
+   chatBox.innerHTML = '';
+
+   const statusMsg = document.createElement('span');
+   statusMsg.textContent = "Очищено!";
+   statusMsg.style.color = "green";
+   statusMsg.style.fontWeight = "bold";
+   statusMsg.style.padding = "5px 10px";
+   btn.replaceWith(statusMsg);
+
+   setTimeout(() => {
+      statusMsg.replaceWith(btn);
+   }, 2000);
 }
 
-
-
-document.addEventListener('click', function (event) {
+document.addEventListener('click', (event) => {
 
    const btn = event.target.closest('[data-behavior="like"]');
 
@@ -190,109 +242,69 @@ document.addEventListener('click', function (event) {
          btn.querySelector('.like-text').innerText = "Like";
       }
 
-
       btn.dataset.count = currentCount;
       countSpan.innerText = currentCount;
    }
 });
 
-
-
 const MouseTracker = {
    panel: document.getElementById('tracker-panel'),
    coordsDisplay: document.getElementById('tracker-coords'),
    clickDisplay: document.getElementById('tracker-click'),
-   enabled: false,
+   isEnabled: false,
 
-
-   handleEvent(event) {
-      switch (event.type) {
-         case 'mousemove':
-            this.updateCoords(event);
-            break;
-         case 'click':
-            this.logClick(event);
-            break;
-      }
+   updateCoords(event) {
+      MouseTracker.coordsDisplay.innerText = `X: ${event.clientX} | Y: ${event.clientY}`;
    },
 
-   updateCoords(e) {
-      this.coordsDisplay.innerText = `X: ${e.clientX} | Y: ${e.clientY}`;
-   },
+   logClick(event) {
+      MouseTracker.clickDisplay.innerHTML = `Клік по: <b>${event.target.tagName}</b>`;
+      MouseTracker.clickDisplay.style.color = "#fff";
 
-   logClick(e) {
-      console.log("Обробник підвішено на елемент:", e.currentTarget);
-
-      this.clickDisplay.innerHTML = `
-         Клік по: <b>${e.target.tagName.toLowerCase()}</b><br>
-         Обробник на: <i>${e.currentTarget.constructor.name}</i>
-      `;
-
-      this.clickDisplay.style.color = "#fff";
-      setTimeout(() => this.clickDisplay.style.color = "#c5a059", 500);
+      setTimeout(() => {
+         MouseTracker.clickDisplay.style.color = "#c5a059";
+      }, 500);
    },
 
    toggle() {
-      if (!this.enabled) {
-         document.addEventListener('mousemove', this);
-         document.addEventListener('click', this);
-         this.panel.classList.add('active');
-         this.enabled = true;
-         return true;
-      } else {
-         document.removeEventListener('mousemove', this);
-         document.removeEventListener('click', this);
+      if (this.isEnabled) {
+         document.removeEventListener('mousemove', this.updateCoords);
+         document.removeEventListener('click', this.logClick);
+
          this.panel.classList.remove('active');
-         this.enabled = false;
+         this.isEnabled = false;
          return false;
+      } else {
+         document.addEventListener('mousemove', this.updateCoords);
+         document.addEventListener('click', this.logClick);
+
+         this.panel.classList.add('active');
+         this.isEnabled = true;
+         return true;
       }
    }
 };
 
-const trackerBtn = document.getElementById('toggle-tracker-btn');
-if (trackerBtn) {
-   trackerBtn.onclick = () => {
-      const isOn = MouseTracker.toggle();
-      trackerBtn.innerText = isOn ? "Вимкнути трекер" : "Увімкнути трекер миші";
-      trackerBtn.style.color = isOn ? "red" : "";
-   };
-}
-
-
 const footerCategories = document.getElementById('footer-categories');
 if (footerCategories) {
    footerCategories.onclick = function (event) {
-      if (event.target.tagName === 'LI') {
+      const item = event.target.closest('li');
 
-         for (let item of this.children) {
-            item.style.color = "";
-            item.style.fontWeight = "normal";
+      if (item && this.contains(item)) {
+
+         for (let child of this.children) {
+            child.style.color = "";
+            child.style.fontWeight = "normal";
          }
 
-         event.target.style.color = "#c5a059";
-         event.target.style.fontWeight = "bold";
-
-         console.log(`Обрано категорію: ${event.target.innerText}`);
-      }
-   };
-}
-
-
-const commandPanel = document.getElementById('footer-commands');
-const statusBox = document.getElementById('cmd-status');
-
-if (commandPanel) {
-   commandPanel.onclick = function (event) {
-      const action = event.target.dataset.action;
-
-      if (action) {
-         runCommand(action);
+         item.style.color = "#c5a059";
+         item.style.fontWeight = "bold";
+         console.log(`Обрано категорію: ${item.innerText}`);
       }
    };
 }
 
 document.addEventListener('click', function (event) {
-
    const target = event.target.closest('[data-action]');
 
    if (target) {
@@ -315,7 +327,6 @@ function runCommand(action, btnElement) {
 
       case 'theme':
          document.body.classList.toggle('dark-mode');
-
          const isDark = document.body.classList.contains('dark-mode');
 
          if (btnElement) {
@@ -327,5 +338,21 @@ function runCommand(action, btnElement) {
             statusBox.style.color = isDark ? "#fff" : "#c5a059";
          }
          break;
+
+      case 'toggleTracker':
+         const isTracking = MouseTracker.toggle();
+
+         if (btnElement) {
+            btnElement.innerText = isTracking ? "Вимкнути трекер" : "Увімкнути трекер миші";
+            btnElement.style.color = isTracking ? "red" : "";
+         }
+
+         if (statusBox) {
+            statusBox.innerText = isTracking ? "Трекер: УВІМКНЕНО" : "Трекер: ВИМКНЕНО";
+         }
+         break;
+
+      default:
+         console.warn("Невідома команда:", action);
    }
 }

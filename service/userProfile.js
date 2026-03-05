@@ -43,37 +43,20 @@ window.removeFromCollection = function (index) {
    }
 };
 
-window.searchTable = function () {
-   const input = document.getElementById('searchInput');
-   const filter = input.value.toLowerCase();
-   const rows = document.getElementById('collectionBody').getElementsByTagName('tr');
+window.searchTable = () => {
+   const filter = document.getElementById('searchInput').value.toLowerCase().trim();
+   const rows = document.querySelectorAll('#collectionBody tr');
 
-   for (let i = 0; i < rows.length; i++) {
-      const titleCell = rows[i].getElementsByTagName('td')[0];
-      if (titleCell) {
-         const textValue = titleCell.textContent || titleCell.innerText;
-         if (textValue.toLowerCase().indexOf(filter) > -1) {
-            rows[i].style.display = "";
-            const textSpan = rows[i].querySelector('.art-item span');
+   rows.forEach(row => {
+      const span = row.querySelector('.art-item span');
+      const text = span ? span.textContent.toLowerCase() : '';
+      const isMatch = text.includes(filter);
 
-            if (textSpan) {
-               const oldBg = textSpan.style.backgroundColor;
-               const oldColor = textSpan.style.color;
+      row.style.display = isMatch ? '' : 'none';
 
-               textSpan.style.backgroundColor = "yellow";
-               textSpan.style.color = "black";
-               textSpan.style.borderRadius = "4px";
-
-               setTimeout(() => {
-                  textSpan.style.backgroundColor = oldBg;
-                  textSpan.style.color = oldColor;
-                  textSpan.style.borderRadius = "";
-               }, 300);
-            }
-
-         } else {
-            rows[i].style.display = "none";
-         }
+      if (isMatch && filter && span) {
+         span.classList.add('highlight-anim');
+         setTimeout(() => span.classList.remove('highlight-anim'), 300);
       }
-   }
-}
+   });
+};
