@@ -488,7 +488,7 @@ a:active {
 }
 
 .footer-list li:hover {
-   color: black;
+   color: var(--text-dark);
    text-decoration: underline;
 }
 
@@ -588,7 +588,6 @@ a:active {
 }
 
 .floating-theme-btn:hover {
-   transform: scale(1.1) rotate(15deg);
    background-color: #034d34;
 }
 
@@ -664,6 +663,11 @@ body.dark-mode textarea:focus {
 body.dark-mode .user1 {
    background-color: #333;
    color: #fff;
+}
+
+body.dark-mode .footer-list li:hover {
+   color: var(--bg-light);
+   text-decoration: underline;
 }
 
 
