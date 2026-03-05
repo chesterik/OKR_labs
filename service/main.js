@@ -89,15 +89,16 @@ function openPainting(imgSrc, title) {
       document.getElementById('gallery-modal').classList.add('open');
    }, 10);
 
-   console.log(document.documentElement.outerHTML);
 
    const mainTitle = document.getElementById('main-title');
    if (mainTitle && mainTitle.firstChild) {
       console.log("Node Value заголовка:", mainTitle.firstChild.nodeValue);
    }
+
+   console.log(document.documentElement.outerHTML);
 }
 
-window.closeModal = function () {
+window.closeModal = () => {
    const modal = document.getElementById('gallery-modal');
    if (modal) {
       modal.classList.remove('open');
@@ -109,8 +110,8 @@ window.closeModal = function () {
    }
 };
 
-window.addToProfile = function () {
-   console.log("Спроба додати:", currentArt);
+window.addToProfile = () => {
+   // console.log("add -> ", currentArt);
 
    let collection = JSON.parse(localStorage.getItem('nobleCollection')) || [];
 
