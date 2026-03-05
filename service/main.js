@@ -10,89 +10,91 @@ function openPainting(imgSrc, title) {
    if (document.getElementById('gallery-modal')) return;
 
    const styles = `
-      <style id="gallery-styles">
-         .overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(5, 5, 5, 0.95); 
-            backdrop-filter: blur(10px);
-            z-index: 10000;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            opacity: 0; transition: opacity 0.2s ease;
-         }
-         .overlay.open { opacity: 1; }
-         .img-container {
-            position: relative; max-width: 90%; max-height: 70vh;
-            display: flex; justify-content: center; margin-bottom: 40px;
-         }
-         .img-container img {
-            max-width: 100%; max-height: 70vh;
-            border-radius: 8px;
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
-            display: block;
-         }
-         .modal-title {
-            color: #fff; font-family: 'Georgia', serif; font-size: 24px;
-            letter-spacing: 1px; margin-bottom: 20px; text-align: center;
-         }
-         .controls-bar {
-            position: absolute; bottom: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 10px 10px 10px 20px;
-            border-radius: 100px;
-            display: flex; gap: 15px; align-items: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-         }
-         .btn-close {
-            background: transparent; border: none; color: #aaa;
-            font-size: 14px; font-weight: 600; cursor: pointer;
-            padding: 10px 20px; transition: 0.3s;
-         }
-         .btn-close:hover { color: #fff; }
-         .btn-add {
-            background: #023020; color: #fff; border: none;
-            padding: 12px 30px; border-radius: 50px;
-            font-weight: 700; cursor: pointer; transition: 0.3s;
-            display: flex; align-items: center; gap: 8px;
-         }
-         .btn-add:hover {
-            background: #fff; color: #000;
-            box-shadow: 0 0 20px rgba(255,255,255,0.4);
-         }
-      </style>
-   `;
-
-   const randomLikes = Math.floor(Math.random() * 50) + 1;
+         <style id="gallery-styles">
+               .overlay {
+                  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                  background: rgba(5, 5, 5, 0.95); 
+                  backdrop-filter: blur(10px);
+                  z-index: 10000;
+                  display: flex; flex-direction: column; align-items: center; justify-content: center;
+                  opacity: 0; 
+                  transition: opacity 0.2s ease;
+               }
+               .overlay.open { opacity: 1; }
+               .img-container {
+                  position: relative; max-width: 90%; max-height: 70vh;
+                  display: flex; justify-content: center; margin-bottom: 40px;
+               }
+               .img-container img {
+                  max-width: 100%; max-height: 70vh;
+                  border-radius: 8px;
+                  box-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
+                  display: block;
+               }
+               .modal-title {
+                  color: #fff; font-family: 'Georgia', serif; font-size: 24px;
+                  letter-spacing: 1px; margin-bottom: 20px; text-align: center;
+               }
+               .controls-bar {
+                  position: absolute; bottom: 40px;
+                  background: rgba(255, 255, 255, 0.1);
+                  backdrop-filter: blur(20px);
+                  border: 1px solid rgba(255, 255, 255, 0.1);
+                  padding: 10px 10px 10px 20px;
+                  border-radius: 100px;
+                  display: flex; gap: 15px; align-items: center;
+                  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+               }
+               .btn-close {
+                  background: transparent; border: none; color: #aaa;
+                  font-size: 14px; font-weight: 600; cursor: pointer;
+                  padding: 10px 20px; transition: 0.3s;
+               }
+               .btn-close:hover { color: #fff; }
+               .btn-add {
+                  background: cornflowerblue; 
+                  color: #fff; border: none;
+                  padding: 12px 30px; border-radius: 50px;
+                  font-weight: 700; cursor: pointer;
+                  transition: 0.3s;
+                  display: flex; align-items: center; gap: 8px;
+               }
+               .btn-add:hover {
+                  background: #fff; color: #000;
+                  box-shadow: 0 0 20px rgba(255,255,255,0.4);
+               }
+         </style>
+      `;
 
    const html = `
-      <div id="gallery-modal" class="overlay" onclick="if(event.target === this) closeModal()">
-         <h2 class="modal-title">${title}</h2>
-         
-         <div class="img-container">
-            <img src="${imgSrc}" alt="${title}">
-         </div>
+         <div id="gallery-modal" class="overlay" onclick="if(event.target === this) closeModal()">
+               <h2 class="modal-title">${title}</h2>
+               
+               <div class="img-container">
+                  <img src="${imgSrc}" alt="${title}">
+               </div>
 
-         <div class="controls-bar">
-            <button class="btn-like" data-behavior="like" data-count="${randomLikes}">
-               ❤️ <span class="like-text">Like</span> <span class="count">${randomLikes}</span>
-            </button>
-            
-            <div style="width: 1px; height: 20px; background: rgba(255,255,255,0.2);"></div>
-
-            <button class="btn-close" onclick="closeModal()">Закрити</button>
-            <button class="btn-add" onclick="addToProfile()">
-               <span>+</span> Додати в колекцію
-            </button>
+               <div class="controls-bar">
+                  <button class="btn-close" onclick="closeModal()">Закрити</button>
+                  <button class="btn-add" onclick="addToProfile()">
+                     <span>+</span> Додати в колекцію
+                  </button>
+               </div>
          </div>
-      </div>
-   `;
+      `;
 
    document.body.insertAdjacentHTML('beforeend', styles + html);
 
    setTimeout(() => {
       document.getElementById('gallery-modal').classList.add('open');
    }, 10);
+
+   console.log(document.documentElement.outerHTML);
+
+   const mainTitle = document.getElementById('main-title');
+   if (mainTitle && mainTitle.firstChild) {
+      console.log("Node Value заголовка:", mainTitle.firstChild.nodeValue);
+   }
 }
 
 window.closeModal = function () {
@@ -108,23 +110,30 @@ window.closeModal = function () {
 };
 
 window.addToProfile = function () {
+   console.log("Спроба додати:", currentArt);
+
    let collection = JSON.parse(localStorage.getItem('nobleCollection')) || [];
+
    const exists = collection.some(item => item.src === currentArt.src);
 
    if (!exists) {
       currentArt.date = new Date().toLocaleDateString();
       currentArt.desc = "Додано з головної галереї";
+
       collection.push(currentArt);
       localStorage.setItem('nobleCollection', JSON.stringify(collection));
+
       alert('Успішно збережено в колекцію!');
    } else {
       alert('Ця картина вже є у вашій колекції.');
    }
+
    closeModal();
 };
 
-function showDeveloperInfo(name) {
-   alert(`Розробник: ${name}`);
+function showDeveloperInfo(name, position = "Owner") {
+   const metaAuthor = document.querySelector('meta[name="author"]').content;
+   alert(`Автор: ${name} \nПосада: ${position}\nMeta-Author: ${metaAuthor}`);
 }
 
 function sendMessage(user) {
@@ -135,18 +144,38 @@ function sendMessage(user) {
    const chatBox = document.getElementById('chat');
    const msg = document.createElement('div');
    msg.classList.add('msg', user === 1 ? 'user1' : 'user2');
-   msg.innerText = text;
 
+   const textNode = document.createTextNode(text);
+
+   const label = document.createElement('span');
+   label.style.fontSize = "10px";
+   label.style.display = "block";
+   label.style.opacity = "0.6";
+   label.textContent = `USER ${user}`;
+
+   msg.prepend(label);
+   msg.append(textNode);
    chatBox.append(msg);
+
+   const timeStamp = document.createElement('div');
+   timeStamp.style.fontSize = "8px";
+   timeStamp.style.textAlign = user === 1 ? "left" : "right";
+   timeStamp.style.color = "#555";
+   timeStamp.textContent = new Date().toLocaleTimeString();
+
+   msg.after(timeStamp);
+
    ta.value = '';
    chatBox.scrollTop = chatBox.scrollHeight;
 }
 
 function searchPainting() {
-   const query = prompt("Пошук картини:");
+   const query = prompt("Введіть назву картини, яку шукаєте:");
+
    if (query) {
       const cards = document.querySelectorAll('.pin-item');
       let found = false;
+
       cards.forEach(card => {
          const title = card.querySelector('b').innerText.toLowerCase();
          if (title.includes(query.toLowerCase())) {
@@ -156,244 +185,74 @@ function searchPainting() {
             found = true;
          }
       });
-      if (!found) alert("Не знайдено.");
+
+      if (!found) {
+         alert("Картину '" + query + "' не знайдено.");
+      }
    }
 }
 
 function userDialog() {
-   alert("Функціонал діалогу тимчасово відключено.");
+   const isReady = confirm("Бажаєте дізнатися кількість картин у галереї?");
+   if (!isReady) {
+      alert("Діалог скасовано.");
+      return;
+   }
+   const titles = document.querySelectorAll('.pin-content b');
+   if (titles.length === 0) {
+      alert("У галереї наразі немає картин.");
+      return;
+   }
+   let count = prompt(
+      `Скільки картин ви хочете проаналізувати? (1 - ${titles.length})`,
+      "3"
+   );
+   if (count === null) {
+      alert("Введення скасовано.");
+      return;
+   }
+   count = Number(count);
+   if (isNaN(count)) {
+      alert("Будь ласка, введіть числове значення.");
+      return;
+   }
+   if (!Number.isInteger(count)) {
+      alert("Потрібно ввести ціле число.");
+      return;
+   }
+   if (count <= 0) {
+      alert("Кількість має бути більшою за 0.");
+      return;
+   }
+   if (count > titles.length) {
+      alert(`У галереї лише ${titles.length} картин.`);
+      return;
+   }
+   let result = `Ось назви перших ${count} картин:\n\n`;
+   for (let i = 0; i < count; i++) {
+      result += `${i + 1}. ${titles[i].textContent}\n`;
+   }
+   alert(result);
 }
 
 function clearChat() {
-   document.getElementById('chat').innerHTML = '';
+   const chatBox = document.getElementById('chat');
+   const btn = document.getElementById('clear-btn');
+
+   chatBox.innerHTML = '';
+
+   const statusMsg = document.createElement('span');
+   statusMsg.textContent = "Очищено!";
+   statusMsg.style.color = "green";
+   statusMsg.style.fontWeight = "bold";
+   statusMsg.style.padding = "5px 10px";
+   btn.replaceWith(statusMsg);
+
+   setTimeout(() => {
+      statusMsg.replaceWith(btn);
+   }, 2000);
 }
 
 
-
-document.addEventListener('click', function (event) {
-
-   const btn = event.target.closest('[data-behavior="like"]');
-
-   if (btn) {
-      let countSpan = btn.querySelector('.count');
-      let currentCount = parseInt(btn.dataset.count);
-
-      if (!btn.classList.contains('liked')) {
-
-         currentCount++;
-         btn.classList.add('liked');
-         btn.querySelector('.like-text').innerText = "Liked";
-      } else {
-
-         currentCount--;
-         btn.classList.remove('liked');
-         btn.querySelector('.like-text').innerText = "Like";
-      }
-
-
-      btn.dataset.count = currentCount;
-      countSpan.innerText = currentCount;
-   }
-});
-
-
-
-const MouseTracker = {
-   panel: document.getElementById('tracker-panel'),
-   coordsDisplay: document.getElementById('tracker-coords'),
-   clickDisplay: document.getElementById('tracker-click'),
-   enabled: false,
-
-
-   handleEvent(event) {
-      switch (event.type) {
-         case 'mousemove':
-            this.updateCoords(event);
-            break;
-         case 'click':
-            this.logClick(event);
-            break;
-      }
-   },
-
-   updateCoords(e) {
-      this.coordsDisplay.innerText = `X: ${e.clientX} | Y: ${e.clientY}`;
-   },
-
-   logClick(e) {
-      console.log("Обробник підвішено на елемент:", e.currentTarget);
-
-      this.clickDisplay.innerHTML = `
-         Клік по: <b>${e.target.tagName.toLowerCase()}</b><br>
-         Обробник на: <i>${e.currentTarget.constructor.name}</i>
-      `;
-
-      this.clickDisplay.style.color = "#fff";
-      setTimeout(() => this.clickDisplay.style.color = "#c5a059", 500);
-   },
-
-   toggle() {
-      if (!this.enabled) {
-         document.addEventListener('mousemove', this);
-         document.addEventListener('click', this);
-         this.panel.classList.add('active');
-         this.enabled = true;
-         return true;
-      } else {
-         document.removeEventListener('mousemove', this);
-         document.removeEventListener('click', this);
-         this.panel.classList.remove('active');
-         this.enabled = false;
-         return false;
-      }
-   }
-};
-
-const trackerBtn = document.getElementById('toggle-tracker-btn');
-if (trackerBtn) {
-   trackerBtn.onclick = () => {
-      const isOn = MouseTracker.toggle();
-      trackerBtn.innerText = isOn ? "Вимкнути трекер" : "Увімкнути трекер миші";
-      trackerBtn.style.color = isOn ? "red" : "";
-   };
-}
-
-
-const footerCategories = document.getElementById('footer-categories');
-if (footerCategories) {
-   footerCategories.onclick = function (event) {
-      if (event.target.tagName === 'LI') {
-
-         for (let item of this.children) {
-            item.style.color = "";
-            item.style.fontWeight = "normal";
-         }
-
-         event.target.style.color = "#c5a059";
-         event.target.style.fontWeight = "bold";
-
-         console.log(`Обрано категорію: ${event.target.innerText}`);
-      }
-   };
-}
-
-
-const commandPanel = document.getElementById('footer-commands');
-const statusBox = document.getElementById('cmd-status');
-
-if (commandPanel) {
-   commandPanel.onclick = function (event) {
-      const action = event.target.dataset.action;
-
-      if (action) {
-         runCommand(action);
-      }
-   };
-}
-
-document.addEventListener('click', function (event) {
-
-   const target = event.target.closest('[data-action]');
-
-   if (target) {
-      const action = target.dataset.action;
-      runCommand(action, target);
-   }
-});
-
-function runCommand(action, btnElement) {
-   const statusBox = document.getElementById('cmd-status');
-
-   switch (action) {
-      case 'save':
-         alert("Системний лог збережено (Demo)");
-         if (statusBox) {
-            statusBox.innerText = "Система: Налаштування збережено!";
-            statusBox.style.color = "green";
-         }
-         break;
-
-      case 'theme':
-         document.body.classList.toggle('dark-mode');
-
-         const isDark = document.body.classList.contains('dark-mode');
-
-         if (btnElement) {
-            btnElement.innerText = isDark ? "☀️" : "🌙";
-         }
-
-         if (statusBox) {
-            statusBox.innerText = isDark ? "Режим: Темний 🌙" : "Режим: Світлий ☀️";
-            statusBox.style.color = isDark ? "#fff" : "#c5a059";
-         }
-         break;
-   }
-}
-
-const galleryContainer = document.querySelector('.container');
-
-if (galleryContainer) {
-
-   galleryContainer.onmouseover = function (event) {
-      let target = event.target.closest('.pin-item');
-
-      if (!target) return;
-
-      if (target.contains(event.relatedTarget)) return;
-
-      target.classList.add('hover-active');
-
-      console.log(`Mouse IN: ${target.querySelector('b').innerText}`);
-      console.log(`--> Прийшов з:`, event.relatedTarget ? event.relatedTarget.tagName : "зовні вікна");
-   };
-
-   galleryContainer.onmouseout = function (event) {
-      let target = event.target.closest('.pin-item');
-      if (!target) return;
-
-      if (target.contains(event.relatedTarget)) return;
-
-      target.classList.remove('hover-active');
-
-      console.log(`Mouse OUT: ${target.querySelector('b').innerText}`);
-      console.log(`--> Пішов на:`, event.relatedTarget ? event.relatedTarget.tagName : "зовні вікна");
-   };
-}
-
-
-const stamp = document.getElementById('draggable-stamp');
-
-if (stamp) {
-   stamp.onmousedown = function (event) {
-      let shiftX = event.clientX - stamp.getBoundingClientRect().left;
-      let shiftY = event.clientY - stamp.getBoundingClientRect().top;
-
-      stamp.style.position = 'fixed';
-      stamp.style.zIndex = 10002;
-
-      function moveAt(pageX, pageY) {
-         stamp.style.left = pageX - shiftX + 'px';
-         stamp.style.top = pageY - shiftY + 'px';
-      }
-
-      function onMouseMove(event) {
-         moveAt(event.clientX, event.clientY);
-      }
-
-      document.addEventListener('mousemove', onMouseMove);
-
-      stamp.onmouseup = function () {
-         document.removeEventListener('mousemove', onMouseMove);
-         stamp.onmouseup = null;
-
-         stamp.style.transform = "scale(1.2)";
-         setTimeout(() => stamp.style.transform = "scale(1)", 150);
-      };
-   };
-
-   stamp.ondragstart = function () {
-      return false;
-   };
-}
 
 
