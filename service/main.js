@@ -221,7 +221,13 @@ const MouseTracker = {
    },
 
    logClick(e) {
-      this.clickDisplay.innerText = `Клік по: <${e.target.tagName.toLowerCase()}>`;
+      console.log("Обробник підвішено на елемент:", e.currentTarget);
+
+      this.clickDisplay.innerHTML = `
+         Клік по: <b>${e.target.tagName.toLowerCase()}</b><br>
+         Обробник на: <i>${e.currentTarget.constructor.name}</i>
+      `;
+
       this.clickDisplay.style.color = "#fff";
       setTimeout(() => this.clickDisplay.style.color = "#c5a059", 500);
    },
@@ -257,7 +263,16 @@ const footerCategories = document.getElementById('footer-categories');
 if (footerCategories) {
    footerCategories.onclick = function (event) {
       if (event.target.tagName === 'LI') {
-         alert(`Фільтр по категорії: ${event.target.innerText} (Demo)`);
+
+         for (let item of this.children) {
+            item.style.color = "";
+            item.style.fontWeight = "normal";
+         }
+
+         event.target.style.color = "#c5a059";
+         event.target.style.fontWeight = "bold";
+
+         console.log(`Обрано категорію: ${event.target.innerText}`);
       }
    };
 }

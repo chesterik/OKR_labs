@@ -459,6 +459,23 @@ a:active {
    margin-bottom: 15px;
 }
 
+.footer-col button {
+   color: black;
+   border: none;
+   padding: 10px 10px;
+   cursor: pointer;
+   font-size: 14px;
+   border-radius: 500px;
+   transition: 0.2s;
+   font-weight: 300;
+}
+
+.footer-col button:hover {
+   background-color: #044b33;
+   color: white;
+}
+
+
 .footer-list {
    list-style: none;
    padding: 0;
