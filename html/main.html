@@ -22,9 +22,6 @@
             // alert("Довша назва: " + result);
          }
 
-         document.body.style.background = "lightgray";
-         setTimeout(() => document.body.style.background = "", 30000);
-
          document.getElementById('author-btn').onclick = () => showDeveloperInfo("Arseny");
 
       });
@@ -188,7 +185,7 @@
 
          <div class="footer-col">
             <h4>Інструменти</h4>
-            <button id="toggle-tracker-btn">Увімкнути трекер миші</button>
+            <button data-action="toggleTracker">Увімкнути трекер миші</button>
             <p style="margin-top: 10px;">&copy; 2026 Noble Art Project <button id="author-btn" class="js-btn-footer">Про
                   автора</button></p>
          </div>
