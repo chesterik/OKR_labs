@@ -253,30 +253,42 @@ const MouseTracker = {
    clickDisplay: document.getElementById('tracker-click'),
    isEnabled: false,
 
+   handleEvent(event) {
+      console.log("Обробник спрацював на елементі (currentTarget):", event.currentTarget);
+
+      switch (event.type) {
+         case 'mousemove':
+            this.updateCoords(event);
+            break;
+         case 'click':
+            this.logClick(event);
+            break;
+      }
+   },
+
    updateCoords(event) {
-      MouseTracker.coordsDisplay.innerText = `X: ${event.clientX} | Y: ${event.clientY}`;
+      this.coordsDisplay.innerText = `X: ${event.clientX} | Y: ${event.clientY}`;
    },
 
    logClick(event) {
-      MouseTracker.clickDisplay.innerHTML = `Клік по: <b>${event.target.tagName}</b>`;
-      MouseTracker.clickDisplay.style.color = "#fff";
-
+      this.clickDisplay.innerHTML = `Клік по: <b>${event.target.tagName}</b>`;
+      this.clickDisplay.style.color = "#fff";
       setTimeout(() => {
-         MouseTracker.clickDisplay.style.color = "#c5a059";
+         this.clickDisplay.style.color = "#c5a059";
       }, 500);
    },
 
    toggle() {
       if (this.isEnabled) {
-         document.removeEventListener('mousemove', this.updateCoords);
-         document.removeEventListener('click', this.logClick);
+         document.removeEventListener('mousemove', this);
+         document.removeEventListener('click', this);
 
          this.panel.classList.remove('active');
          this.isEnabled = false;
          return false;
       } else {
-         document.addEventListener('mousemove', this.updateCoords);
-         document.addEventListener('click', this.logClick);
+         document.addEventListener('mousemove', this);
+         document.addEventListener('click', this);
 
          this.panel.classList.add('active');
          this.isEnabled = true;
@@ -284,7 +296,6 @@ const MouseTracker = {
       }
    }
 };
-
 const footerCategories = document.getElementById('footer-categories');
 if (footerCategories) {
    footerCategories.onclick = function (event) {
