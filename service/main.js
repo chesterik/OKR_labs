@@ -364,6 +364,6 @@ function runCommand(action, btnElement) {
          break;
 
       default:
-         console.warn("Невідома команда:", action);
+         console.log("Невідома команда:", action);
    }
 }
